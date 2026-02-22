@@ -130,7 +130,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
             value={userName} 
             onChange={(e) => setUserName(e.target.value)}
             required
-            autocomplete="name"
+            autoComplete="name"
           />
           <input 
             type="password" 
@@ -138,7 +138,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
             value={password} 
             onChange={(e) => setPassword(e.target.value)}
             required
-            autocomplete="new-password"
+            autoComplete="new-password"
           />
           <select value={rating} onChange={(e) => setRating(Number(e.target.value))}>
             {[5, 4, 3, 2, 1].map(n => (
