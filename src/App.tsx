@@ -5,7 +5,9 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ReviewsPage from './pages/ReviewsPage';
 import ContactPage from './pages/ContactPage';
-import ReviewDetailPage from './pages/ReviewDetailPage'; // Import ReviewDetailPage
+import ReviewDetailPage from './pages/ReviewDetailPage';
+import AboutPage from './pages/AboutPage'; // Import AboutPage
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'; // Import PrivacyPolicyPage
 import './App.css';
 
 // Main Layout component
@@ -29,8 +31,10 @@ const App: React.FC = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="reviews" element={<ReviewsPage />} />
-            <Route path="reviews/:id" element={<ReviewDetailPage />} /> {/* New route for review details */}
+            <Route path="reviews/:id" element={<ReviewDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
+            <Route path="about" element={<AboutPage />} /> {/* New route for AboutPage */}
+            <Route path="privacy" element={<PrivacyPolicyPage />} /> {/* New route for PrivacyPolicyPage */}
             {/* Add more routes here as needed */}
           </Route>
         </Routes>

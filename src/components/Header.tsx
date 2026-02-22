@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../hooks/useTheme'; // Updated import path
+import { useTheme } from '../hooks/useTheme';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -23,6 +23,7 @@ const Header: React.FC = () => {
           <NavLink to="/">{t('nav.home')}</NavLink>
           <NavLink to="/reviews">{t('nav.reviews')}</NavLink>
           <NavLink to="/contact">{t('nav.contact')}</NavLink>
+          <NavLink to="/about">{t('nav.about')}</NavLink> {/* New About Us link */}
         </nav>
         <div className="header-controls">
           <div className="language-selector">
