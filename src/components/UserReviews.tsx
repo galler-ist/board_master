@@ -60,6 +60,12 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
         reviewsData.push({ id: doc.id, ...doc.data() } as Review);
       });
       setReviews(reviewsData);
+    }, (error) => {
+      console.error("Error fetching reviews: ", error);
+      // This will help identify if an index is missing
+      if (error.code === 'failed-precondition') {
+        console.warn("Firestore Index is likely missing. Check the link in the error message above.");
+      }
     });
 
     return () => unsubscribe();
