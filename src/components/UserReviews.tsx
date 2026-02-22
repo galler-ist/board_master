@@ -65,7 +65,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
     return () => unsubscribe();
   }, [gameId]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!userName || !comment || !password) return;
 
@@ -80,10 +80,16 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
         lang: i18n.language,
         createdAt: serverTimestamp(),
       });
+      
+      // Explicitly clear all states after successful submission
       setUserName('');
       setComment('');
       setPassword('');
       setRating(5);
+      
+      // Also reset the form element itself as a fallback
+      e.currentTarget.reset();
+      
     } catch (error) {
       console.error("Error adding review: ", error);
       alert("Failed to submit review. Check Firebase permissions.");
