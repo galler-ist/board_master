@@ -14,7 +14,7 @@ export const allReviews: GameReview[] = [
     titleKey: 'game.catan.title',
     rating: 4.5,
     excerptKey: 'game.catan.excerpt',
-    image: 'https://placehold.co/300x200/6C42EF/FFFFFF/png?text=Catan',
+    image: 'https://images.unsplash.com/photo-1579486807353-90924e2c3b8f?auto=format&fit=crop&w=500', // Thematic stock image
     fullContentKey: 'game.catan.fullContent',
   },
   {
@@ -22,7 +22,7 @@ export const allReviews: GameReview[] = [
     titleKey: 'game.wingspan.title',
     rating: 5,
     excerptKey: 'game.wingspan.excerpt',
-    image: 'https://placehold.co/300x200/F472B6/FFFFFF/png?text=Wingspan',
+    image: 'https://images.unsplash.com/photo-1596489396264-a62d08a0d4c6?auto=format&fit=crop&w=500', // Thematic stock image
     fullContentKey: 'game.wingspan.fullContent',
   },
   {
@@ -30,7 +30,7 @@ export const allReviews: GameReview[] = [
     titleKey: 'game.gloomhaven.title',
     rating: 4.8,
     excerptKey: 'game.gloomhaven.excerpt',
-    image: 'https://placehold.co/300x200/10B981/FFFFFF/png?text=Gloomhaven',
+    image: 'https://images.unsplash.com/photo-1579294939223-952796122d25?auto=format&fit=crop&w=500', // Thematic stock image
     fullContentKey: 'game.gloomhaven.fullContent',
   },
   {
@@ -38,7 +38,7 @@ export const allReviews: GameReview[] = [
     titleKey: 'game.terraformingMars.title',
     rating: 4.7,
     excerptKey: 'game.terraformingMars.excerpt',
-    image: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?auto=format&fit=crop&w=500',
+    image: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?auto=format&fit=crop&w=500', // User provided image
     fullContentKey: 'game.terraformingMars.fullContent',
   },
   {
@@ -46,7 +46,7 @@ export const allReviews: GameReview[] = [
     titleKey: 'game.root.title',
     rating: 4.6,
     excerptKey: 'game.root.excerpt',
-    image: 'https://images.unsplash.com/photo-1579294939223-952796122d25?auto=format&fit=crop&w=500',
+    image: 'https://images.unsplash.com/photo-1601614742721-a544a0445d44?auto=format&fit=crop&w=500', // Thematic stock image (general fantasy/forest)
     fullContentKey: 'game.root.fullContent',
   },
   {
@@ -54,7 +54,7 @@ export const allReviews: GameReview[] = [
     titleKey: 'game.spiritIsland.title',
     rating: 4.9,
     excerptKey: 'game.spiritIsland.excerpt',
-    image: 'https://images.unsplash.com/photo-1579486807353-90924e2c3b8f?auto=format&fit=crop&w=500',
+    image: 'https://images.unsplash.com/photo-1591523497577-9094c8e7e174?auto=format&fit=crop&w=500', // Thematic stock image (island/nature)
     fullContentKey: 'game.spiritIsland.fullContent',
   },
 ];
