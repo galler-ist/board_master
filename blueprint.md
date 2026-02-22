@@ -6,29 +6,24 @@ This document outlines the features, design, and development plan for the Board 
 
 ## Current State
 
-The project uses a multi-page architecture with React Router, supporting i18n and a dark/light theme toggle.
+The project uses a multi-page architecture with React Router, supporting i18n and a dark/light theme toggle. It is set up for automatic deployment via Cloudflare Pages.
 
 ## Development Plan
 
-### Phase 1-5 (Completed)
+### Phase 1-6 (Completed)
 
--   Homepage, i18n, Theme Toggle, Contact Form, and multi-page architecture with React Router are implemented.
+-   Homepage, i18n, Theme Toggle, Contact Form, Multi-page architecture, and Review Detail Pages are implemented. Disqus integration was reverted.
 
-### Phase 6: Review Detail Pages with Disqus Comments
+### Phase 7: Google AdSense Integration
 
-**Objective:** Implement individual review detail pages for each board game and integrate Disqus comments on each page.
+**Objective:** Integrate Google AdSense into the application to display advertisements.
 
 **Key Features:**
 
-*   **Review Detail Page Component:** A new page (`src/pages/ReviewDetailPage.tsx`) will be created to display the full details of a single review.
-*   **Dynamic Routing:** The `ReviewsPage` will link to individual review detail pages using dynamic routes (e.g., `/reviews/:id`).
-*   **Disqus Integration:** The provided Disqus embed code will be integrated into each `ReviewDetailPage`, with dynamic `page.url` and `page.identifier` based on the review ID.
-*   **Navigation:** The review cards on the `ReviewsPage` will be updated to `Link` to their respective detail pages.
+*   **AdSense Script:** The provided AdSense script will be added to the `<head>` section of `index.html` to ensure it loads globally.
 
 **Implementation Details:**
 
-*   **Library:** Existing `react-router-dom` will be used for dynamic routing.
-*   **File Structure:** `src/pages/ReviewDetailPage.tsx` will be created.
-*   **Translations:** Any new text on the detail page will be added to `src/i18n.ts`.
-*   **Styling:** Basic styling will be applied to the detail page.
-*   **Commit Message:** `feat: Add review detail pages with Disqus comments`.
+*   **File Modification:** `index.html` will be updated.
+*   **Adsense Client ID:** The provided client ID `ca-pub-9798777248017430` will be used.
+*   **Commit Message:** `feat: Integrate Google AdSense`.
