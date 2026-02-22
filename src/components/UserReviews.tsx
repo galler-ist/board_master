@@ -69,6 +69,9 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
     e.preventDefault();
     if (!userName || !comment || !password) return;
 
+    // Capture the form element before the async call
+    const form = e.currentTarget;
+
     setSubmitting(true);
     try {
       await addDoc(collection(db, 'userReviews'), {
@@ -87,12 +90,13 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
       setPassword('');
       setRating(5);
       
-      // Also reset the form element itself as a fallback
-      e.currentTarget.reset();
+      // Use the captured form reference to reset
+      form.reset();
       
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error adding review: ", error);
-      alert("Failed to submit review. Check Firebase permissions.");
+      // Show the actual error message to diagnose the issue
+      alert(`Failed to submit review: ${error.message || error}`);
     } finally {
       setSubmitting(false);
     }
