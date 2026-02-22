@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // Dummy data - In a real app, you would fetch this from an API
@@ -27,7 +27,7 @@ const allReviews = [
     fullContent: `
       Wingspan is a competitive, medium-weight, card-driven, engine-building board game designed by Elizabeth Hargrave and published by Stonemaier Games in 2019. It has received critical acclaim for its beautiful artwork, engaging gameplay, and unique theme.
       Players are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to their network of wildlife preserves. Each bird you play extends a chain of powerful combinations in one of your three habitats (forest, grassland, and wetland).
-      Each habitat focuses on a key action: gaining food tokens (forest), laying eggs (grassland), or drawing bird cards (wetland). The game features over 170 unique bird cards, each with its own special abilities, beautiful illustrations, and interesting facts.
+      Each habitat focuses on a key action: gaining food tokens (forest), laying eggs (graßsland), or drawing bird cards (wetland). The game features over 170 unique bird cards, each with its own special abilities, beautiful illustrations, and interesting facts.
       Wingspan is praised for its elegant design, relaxing gameplay, and educational value. It's a game that appeals to both seasoned board gamers and newcomers alike, offering a fresh take on engine-building mechanics.
     `,
   },
@@ -51,40 +51,6 @@ const ReviewDetailPage: React.FC = () => {
   const { t } = useTranslation();
   const review = allReviews.find((r) => r.id === Number(id));
 
-  useEffect(() => {
-    // Dynamically load Disqus only when the component mounts
-    // and if a review is found
-    if (review && typeof window !== 'undefined' && document) {
-      const DISQUS_SHORTNAME = 'galler-1'; // Your Disqus Shortname
-      
-      window.disqus_config = function () {
-        this.page.url = window.location.href; // Use current page URL
-        this.page.identifier = `review-${review.id}`; // Unique identifier for the review
-        this.page.title = review.title; // Page title for Disqus
-      };
-
-      const scriptId = 'disqus-embed-script';
-      if (!document.getElementById(scriptId)) {
-        const d = document;
-        const s = d.createElement('script');
-        s.src = `https://${DISQUS_SHORTNAME}.disqus.com/embed.js`;
-        s.setAttribute('data-timestamp', String(+new Date()));
-        s.id = scriptId;
-        (d.head || d.body).appendChild(s);
-      } else {
-        // If script already exists, reload Disqus comments for the new page
-        window.DISQUS.reset({
-          reload: true,
-          config: function() {
-            this.page.url = window.location.href;
-            this.page.identifier = `review-${review.id}`;
-            this.page.title = review.title;
-          }
-        });
-      }
-    }
-  }, [id, review]); // Re-run effect if id or review changes
-
   if (!review) {
     return (
       <section className="review-detail-page container">
@@ -102,8 +68,7 @@ const ReviewDetailPage: React.FC = () => {
       <div className="rating">{'★'.repeat(Math.floor(review.rating))}{'☆'.repeat(5 - Math.floor(review.rating))} ({review.rating})</div>
       <div className="review-full-content" dangerouslySetInnerHTML={{ __html: review.fullContent.replace(/\n/g, '<br />') }} />
 
-      <div id="disqus_thread" style={{ marginTop: '3rem' }}></div>
-      <noscript>{t('disqus.noscript')}</noscript>
+      {/* Disqus comment section removed */}
     </section>
   );
 };

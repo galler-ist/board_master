@@ -32,9 +32,7 @@ const resources = {
         notFound: 'Review Not Found',
         notFoundDescription: 'The review you are looking for does not exist.',
       },
-      disqus: {
-        noscript: 'Please enable JavaScript to view the comments powered by Disqus.',
-      },
+      // Removed disqus: { noscript: ... }
       footer: {
         rights: 'All rights reserved.',
       },
@@ -68,9 +66,7 @@ const resources = {
         notFound: '리뷰를 찾을 수 없습니다',
         notFoundDescription: '찾으시는 리뷰가 존재하지 않습니다.',
       },
-      disqus: {
-        noscript: 'Disqus에서 제공하는 댓글을 보려면 JavaScript를 활성화하십시오.',
-      },
+      // Removed disqus: { noscript: ... }
       footer: {
         rights: '모든 권리 보유.',
       },
@@ -104,9 +100,7 @@ const resources = {
         notFound: 'Bewertung nicht gefunden',
         notFoundDescription: 'Die gesuchte Bewertung existiert nicht.',
       },
-      disqus: {
-        noscript: 'Bitte aktivieren Sie JavaScript, um die von Disqus bereitgestellten Kommentare anzuzeigen.',
-      },
+      // Removed disqus: { noscript: ... }
       footer: {
         rights: 'Alle Rechte vorbehalten.',
       },
