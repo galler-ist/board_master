@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './App.css';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+
   const featuredGames = [
     {
       id: 1,
@@ -26,31 +30,48 @@ const App: React.FC = () => {
     },
   ];
 
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setLangDropdownOpen(false);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
         <div className="container">
           <h1 className="logo">Board Master</h1>
           <nav>
-            <a href="#home">Home</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#about">About</a>
+            <a href="#home">{t('nav.home')}</a>
+            <a href="#reviews">{t('nav.reviews')}</a>
+            <a href="#about">{t('nav.about')}</a>
           </nav>
+          <div className="language-selector">
+            <button onClick={() => setLangDropdownOpen(!langDropdownOpen)} className="language-button">
+              {i18n.language.toUpperCase()}
+            </button>
+            {langDropdownOpen && (
+              <div className="language-dropdown">
+                <a href="#" onClick={() => changeLanguage('en')}>English</a>
+                <a href="#" onClick={() => changeLanguage('ko')}>한국어</a>
+                <a href="#" onClick={() => changeLanguage('de')}>Deutsch</a>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
       <main>
         <section className="hero">
           <div className="container">
-            <h2>Discover Your Next Favorite Board Game</h2>
-            <p>In-depth reviews, strategy guides, and more from passionate gamers.</p>
-            <button className="cta-button">Browse All Reviews</button>
+            <h2>{t('hero.title')}</h2>
+            <p>{t('hero.subtitle')}</p>
+            <button className="cta-button">{t('hero.button')}</button>
           </div>
         </section>
 
         <section id="reviews" className="featured-reviews">
           <div className="container">
-            <h3>Featured Reviews</h3>
+            <h3>{t('featured.title')}</h3>
             <div className="reviews-grid">
               {featuredGames.map((game) => (
                 <div key={game.id} className="review-card">
@@ -70,7 +91,7 @@ const App: React.FC = () => {
 
       <footer className="app-footer">
         <div className="container">
-          <p>&copy; 2026 Board Master. All rights reserved.</p>
+          <p>&copy; 2026 Board Master. {t('footer.rights')}</p>
           <div className="social-links">
             <a href="#">Twitter</a>
             <a href="#">Instagram</a>
