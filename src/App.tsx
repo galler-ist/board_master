@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from './contexts/ThemeContext';
 import './App.css';
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const { theme, toggleTheme } = useTheme();
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   const featuredGames = [
+    // ... (game data remains the same)
     {
       id: 1,
       title: 'Catan',
@@ -45,21 +48,30 @@ const App: React.FC = () => {
             <a href="#reviews">{t('nav.reviews')}</a>
             <a href="#about">{t('nav.about')}</a>
           </nav>
-          <div className="language-selector">
-            <button onClick={() => setLangDropdownOpen(!langDropdownOpen)} className="language-button">
-              {i18n.language.toUpperCase()}
-            </button>
-            {langDropdownOpen && (
-              <div className="language-dropdown">
-                <a href="#" onClick={() => changeLanguage('en')}>English</a>
-                <a href="#" onClick={() => changeLanguage('ko')}>한국어</a>
-                <a href="#" onClick={() => changeLanguage('de')}>Deutsch</a>
-              </div>
-            )}
+          <div className="header-controls">
+            <div className="language-selector">
+              <button onClick={() => setLangDropdownOpen(!langDropdownOpen)} className="language-button">
+                {i18n.language.toUpperCase()}
+              </button>
+              {langDropdownOpen && (
+                <div className="language-dropdown">
+                  <a href="#" onClick={() => changeLanguage('en')}>English</a>
+                  <a href="#" onClick={() => changeLanguage('ko')}>한국어</a>
+                  <a href="#" onClick={() => changeLanguage('de')}>Deutsch</a>
+                </div>
+              )}
+            </div>
+            <div className="theme-switcher">
+              <label className="switch">
+                <input type="checkbox" onChange={toggleTheme} checked={theme === 'dark'} />
+                <span className="slider round"></span>
+              </label>
+            </div>
           </div>
         </div>
       </header>
 
+      {/* Main and Footer sections remain the same */}
       <main>
         <section className="hero">
           <div className="container">

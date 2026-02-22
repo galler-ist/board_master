@@ -5,11 +5,14 @@ import './index.css';
 
 // Import i18n configuration
 import './i18n';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <React.Suspense fallback="loading...">
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </React.Suspense>
   </React.StrictMode>
 );
