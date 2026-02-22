@@ -6,32 +6,25 @@ This document outlines the features, design, and development plan for the Board 
 
 ## Current State
 
-The project uses a multi-page architecture with React Router, supporting i18n and a dark/light theme toggle. It is set up for automatic deployment via Cloudflare Pages and includes Google AdSense script integration.
+The project uses a multi-page architecture with React Router, supporting i18n and a dark/light theme toggle. It is set up for automatic deployment via Cloudflare Pages and includes Google AdSense script integration. Content has been enriched for AdSense review preparation.
 
 ## Development Plan
 
-### Phase 1-7 (Completed)
+### Phase 1-8 (Completed)
 
--   Homepage, i18n, Theme Toggle, Contact Form, Multi-page architecture, Review Detail Pages, and Google AdSense script integration are implemented.
+-   Homepage, i18n, Theme Toggle, Contact Form, Multi-page architecture, Review Detail Pages, Google AdSense script integration, and AdSense review preparation content are implemented.
 
-### Phase 8: AdSense Review Preparation - Content & Info Pages (Completed)
+### Phase 9: AdSense Compliance - ads.txt & CMP Guidance
 
--   **Status:** "About Us" and "Privacy Policy" pages added; `ReviewsPage` content enriched.
-
-### Phase 9: Dynamic Content Internationalization (Game Data)
-
-**Objective:** Refactor game review data to be translatable using the existing `i18next` system, making game titles, excerpts, and full content dynamically switchable based on the selected language.
+**Objective:** Address Google AdSense compliance requirements for authorized digital sellers (`ads.txt`) and user consent (CMP).
 
 **Key Features:**
 
-*   **Externalized Game Data:** Move `allReviews` array from page components to a dedicated data file.
-*   **i18n Key Integration:** Replace hardcoded game titles, excerpts, and full content with `i18next` translation keys.
-*   **Centralized Translations:** Add game-specific content translations to `src/i18n.ts`.
+*   **`ads.txt` File Creation:** Generate an `ads.txt` file with the user's publisher ID and place it in the website's root directory.
+*   **Consent Management Platform (CMP) Guidance:** Provide clear instructions on how to select and integrate a Google-certified CMP, as direct implementation is outside the AI's capabilities.
 
 **Implementation Details:**
 
-*   **File Creation:** `src/data/games.ts` to store game metadata (ID, rating, image, and translation keys).
-*   **File Modification:**
-    *   `src/pages/ReviewsPage.tsx` and `src/pages/ReviewDetailPage.tsx` to import data from `src/data/games.ts` and use `t()` for translatable content.
-    *   `src/i18n.ts` to include extensive translation entries for each game's title, excerpt, and full content across all supported languages (EN, KO, DE).
-*   **Commit Message:** `feat: Make game content translatable via i18n`.
+*   **File Creation:** `ads.txt` in the project root.
+*   **Guidance:** Text-based instructions for CMP integration will be provided to the user.
+*   **Commit Message:** `feat: AdSense compliance - add ads.txt & CMP guidance`.
