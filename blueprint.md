@@ -6,7 +6,7 @@ This document outlines the features, design, and development plan for the Board 
 
 ## Current State
 
-The project features a responsive homepage with multi-language support (EN, KO, DE). It is set up for automatic deployment via Cloudflare Pages.
+The project features a responsive homepage with multi-language support (EN, KO, DE) and a dark/light theme toggle. It is set up for automatic deployment via Cloudflare Pages.
 
 ## Development Plan
 
@@ -18,18 +18,24 @@ The project features a responsive homepage with multi-language support (EN, KO, 
 
 -   **Status:** Done.
 
-### Phase 3: Dark/Light Theme Toggle
+### Phase 3: Dark/Light Theme Toggle (Completed)
 
-**Objective:** Implement a theme provider and a toggle switch to allow users to change between a dark and a light visual theme.
+-   **Status:** Done.
+
+### Phase 4: Partnership Inquiry Contact Form
+
+**Objective:** Implement a simple contact form for partnership inquiries using Formspree and integrate it into the existing site structure.
 
 **Key Features:**
 
-*   **Theme Toggle Switch:** A toggle switch will be added to the header.
-*   **Theme Persistence:** The user's selected theme will be saved to `localStorage` to persist across sessions.
-*   **CSS Variables:** The theme will be managed by switching a `data-theme` attribute on the `body` and overriding CSS variables.
+*   **Contact Form Component:** A dedicated React component (`ContactForm.tsx`) for the inquiry form.
+*   **Formspree Integration:** The form will submit data to the provided Formspree endpoint (`https://formspree.io/f/xykdnrwv`).
+*   **Form Fields:** Basic fields for Name, Email, and Message.
+*   **Translation:** Form labels and messages will be translated using `i18next`.
+*   **Integration with UI:** The form will be placed in a new "Contact Us" section, accessible via the header navigation.
 
 **Implementation Details:**
 
-*   **State Management:** A `ThemeContext` will be created to provide the theme state and toggle function throughout the application.
-*   **Styling:** CSS variables in `src/index.css` will be updated to support the light theme.
-*   **Component:** The toggle switch will be added to the `App.tsx` header.
+*   **File Structure:** `src/components/ContactForm.tsx` for the form component.
+*   **Styling:** Basic styling for the form elements will be added to `src/App.css`.
+*   **Navigation Update:** The "About" navigation link will be updated to point to the new "Contact Us" section.

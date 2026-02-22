@@ -9,7 +9,7 @@ const resources = {
       nav: {
         home: 'Home',
         reviews: 'Reviews',
-        about: 'About',
+        contact: 'Contact Us', // Changed from 'about'
       },
       hero: {
         title: 'Discover Your Next Favorite Board Game',
@@ -18,6 +18,14 @@ const resources = {
       },
       featured: {
         title: 'Featured Reviews',
+      },
+      contact: {
+        title: 'Partnership Inquiry',
+        description: 'Have a partnership proposal or a business inquiry? Fill out the form below and we will get back to you shortly.',
+        nameLabel: 'Your Name',
+        emailLabel: 'Your Email',
+        messageLabel: 'Your Message',
+        submitButton: 'Send Message',
       },
       footer: {
         rights: 'All rights reserved.',
@@ -29,7 +37,7 @@ const resources = {
       nav: {
         home: '홈',
         reviews: '리뷰',
-        about: '소개',
+        contact: '문의하기', // Changed from '소개'
       },
       hero: {
         title: '인생 보드게임을 찾아보세요',
@@ -38,6 +46,14 @@ const resources = {
       },
       featured: {
         title: '추천 리뷰',
+      },
+      contact: {
+        title: '제휴 문의',
+        description: '제휴 제안이나 사업 문의가 있으시면 아래 양식을 작성해 주세요. 곧 연락드리겠습니다.',
+        nameLabel: '이름',
+        emailLabel: '이메일',
+        messageLabel: '메시지',
+        submitButton: '메시지 보내기',
       },
       footer: {
         rights: '모든 권리 보유.',
@@ -49,7 +65,7 @@ const resources = {
       nav: {
         home: 'Startseite',
         reviews: 'Bewertungen',
-        about: 'Über uns',
+        contact: 'Kontakt', // Changed from 'Über uns'
       },
       hero: {
         title: 'Entdecke dein nächstes Lieblingsbrettspiel',
@@ -58,6 +74,14 @@ const resources = {
       },
       featured: {
         title: 'Vorgestellte Bewertungen',
+      },
+      contact: {
+        title: 'Partnerschaftsanfrage',
+        description: 'Haben Sie einen Partnerschaftsvorschlag oder eine Geschäftsanfrage? Füllen Sie das untenstehende Formular aus und wir werden uns in Kürze bei Ihnen melden.',
+        nameLabel: 'Ihr Name',
+        emailLabel: 'Ihre E-Mail',
+        messageLabel: 'Ihre Nachricht',
+        submitButton: 'Nachricht senden',
       },
       footer: {
         rights: 'Alle Rechte vorbehalten.',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from './contexts/ThemeContext';
+import ContactForm from './components/ContactForm'; // Import the new component
 import './App.css';
 
 const App: React.FC = () => {
@@ -9,7 +10,6 @@ const App: React.FC = () => {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   const featuredGames = [
-    // ... (game data remains the same)
     {
       id: 1,
       title: 'Catan',
@@ -38,6 +38,8 @@ const App: React.FC = () => {
     setLangDropdownOpen(false);
   };
 
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xykdnrwv';
+
   return (
     <div className="app">
       <header className="app-header">
@@ -46,7 +48,7 @@ const App: React.FC = () => {
           <nav>
             <a href="#home">{t('nav.home')}</a>
             <a href="#reviews">{t('nav.reviews')}</a>
-            <a href="#about">{t('nav.about')}</a>
+            <a href="#contact">{t('nav.contact')}</a> {/* Updated navigation link */}
           </nav>
           <div className="header-controls">
             <div className="language-selector">
@@ -71,7 +73,6 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Main and Footer sections remain the same */}
       <main>
         <section className="hero">
           <div className="container">
@@ -97,6 +98,13 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* New Contact Section */}
+        <section id="contact" className="contact-section">
+          <div className="container">
+            <ContactForm formspreeEndpoint={FORMSPREE_ENDPOINT} />
           </div>
         </section>
       </main>
