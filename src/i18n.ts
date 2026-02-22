@@ -33,6 +33,15 @@ const resources = {
         notFound: 'Review Not Found',
         notFoundDescription: 'The review you are looking for does not exist.',
       },
+      reviews: {
+        userReviewsTitle: 'User Reviews & Feedback',
+        namePlaceholder: 'Your Name',
+        stars: 'Stars',
+        commentPlaceholder: 'What did you think of this game?',
+        submitReview: 'Post My Review',
+        submitting: 'Posting...',
+        noReviews: 'No one has reviewed this game yet. Be the first!',
+      },
       disqus: {
         noscript: 'Please enable JavaScript to view the comments powered by Disqus.',
       },

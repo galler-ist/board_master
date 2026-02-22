@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { allReviews } from '../data/games'; // Import allReviews from data file
+import UserReviews from '../components/UserReviews';
 
 const ReviewDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,7 +42,7 @@ const ReviewDetailPage: React.FC = () => {
         <div className="rating">{'★'.repeat(Math.floor(review.rating))}{'☆'.repeat(5 - Math.floor(review.rating))} ({review.rating})</div>
         <div className="review-full-content" dangerouslySetInnerHTML={{ __html: t(review.fullContentKey).replace(/\n/g, '<br />') }} />
 
-        {/* Disqus comment section removed */}
+        <UserReviews gameId={review.id} />
       </section>
     </>
   );

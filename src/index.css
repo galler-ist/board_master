@@ -339,3 +339,69 @@ nav a:hover, nav a.active {
     grid-template-columns: 1fr;
   }
 }
+
+/* User Reviews Section */
+.user-reviews-section {
+  margin-top: 4rem;
+}
+
+.user-reviews-section hr {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.review-form {
+  background-color: var(--surface-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  margin-bottom: 3rem;
+}
+
+.review-form .form-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.review-form select {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.user-review-item {
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.user-rating {
+  color: #FBBF24;
+}
+
+.user-review-item p {
+  margin: 0.5rem 0;
+}
+
+.user-review-item small {
+  color: var(--text-muted);
+}
