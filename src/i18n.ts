@@ -9,7 +9,7 @@ const resources = {
       nav: {
         home: 'Home',
         reviews: 'Reviews',
-        contact: 'Contact Us', // Changed from 'about'
+        contact: 'Contact Us',
       },
       hero: {
         title: 'Discover Your Next Favorite Board Game',
@@ -27,6 +27,14 @@ const resources = {
         messageLabel: 'Your Message',
         submitButton: 'Send Message',
       },
+      reviewDetail: {
+        backToReviews: 'Back to Reviews',
+        notFound: 'Review Not Found',
+        notFoundDescription: 'The review you are looking for does not exist.',
+      },
+      disqus: {
+        noscript: 'Please enable JavaScript to view the comments powered by Disqus.',
+      },
       footer: {
         rights: 'All rights reserved.',
       },
@@ -37,7 +45,7 @@ const resources = {
       nav: {
         home: '홈',
         reviews: '리뷰',
-        contact: '문의하기', // Changed from '소개'
+        contact: '문의하기',
       },
       hero: {
         title: '인생 보드게임을 찾아보세요',
@@ -55,6 +63,14 @@ const resources = {
         messageLabel: '메시지',
         submitButton: '메시지 보내기',
       },
+      reviewDetail: {
+        backToReviews: '리뷰 목록으로 돌아가기',
+        notFound: '리뷰를 찾을 수 없습니다',
+        notFoundDescription: '찾으시는 리뷰가 존재하지 않습니다.',
+      },
+      disqus: {
+        noscript: 'Disqus에서 제공하는 댓글을 보려면 JavaScript를 활성화하십시오.',
+      },
       footer: {
         rights: '모든 권리 보유.',
       },
@@ -65,7 +81,7 @@ const resources = {
       nav: {
         home: 'Startseite',
         reviews: 'Bewertungen',
-        contact: 'Kontakt', // Changed from 'Über uns'
+        contact: 'Kontakt',
       },
       hero: {
         title: 'Entdecke dein nächstes Lieblingsbrettspiel',
@@ -82,6 +98,14 @@ const resources = {
         emailLabel: 'Ihre E-Mail',
         messageLabel: 'Ihre Nachricht',
         submitButton: 'Nachricht senden',
+      },
+      reviewDetail: {
+        backToReviews: 'Zurück zu Bewertungen',
+        notFound: 'Bewertung nicht gefunden',
+        notFoundDescription: 'Die gesuchte Bewertung existiert nicht.',
+      },
+      disqus: {
+        noscript: 'Bitte aktivieren Sie JavaScript, um die von Disqus bereitgestellten Kommentare anzuzeigen.',
       },
       footer: {
         rights: 'Alle Rechte vorbehalten.',

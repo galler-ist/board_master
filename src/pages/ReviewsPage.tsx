@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'; // Import Link
 
 const ReviewsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -40,7 +41,8 @@ const ReviewsPage: React.FC = () => {
                 <h4>{game.title}</h4>
                 <div className="rating">{'★'.repeat(Math.floor(game.rating))}{'☆'.repeat(5 - Math.floor(game.rating))} ({game.rating})</div>
                 <p>{game.excerpt}</p>
-                <a href="#" className="read-more">Read More &rarr;</a>
+                {/* Use Link to navigate to the detail page */}
+                <Link to={`/reviews/${game.id}`} className="read-more">Read More &rarr;</Link>
               </div>
             </div>
           ))}

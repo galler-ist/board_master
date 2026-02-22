@@ -6,29 +6,29 @@ This document outlines the features, design, and development plan for the Board 
 
 ## Current State
 
-The project is a single-page application with multiple features on the homepage. It includes i18n and a theme toggle. It is set up for automatic deployment via Cloudflare Pages.
+The project uses a multi-page architecture with React Router, supporting i18n and a dark/light theme toggle.
 
 ## Development Plan
 
-### Phase 1-4 (Completed)
+### Phase 1-5 (Completed)
 
--   Homepage, i18n, Theme Toggle, and Contact Form features are implemented on a single page.
+-   Homepage, i18n, Theme Toggle, Contact Form, and multi-page architecture with React Router are implemented.
 
-### Phase 5: Refactor to Multi-Page Architecture
+### Phase 6: Review Detail Pages with Disqus Comments
 
-**Objective:** Convert the single-page application into a multi-page application using `react-router-dom` for better structure and scalability.
+**Objective:** Implement individual review detail pages for each board game and integrate Disqus comments on each page.
 
 **Key Features:**
 
-*   **Page-based Routing:** "Reviews" and "Contact" will be moved to their own dedicated pages.
-*   **Persistent Layout:** A main layout component will be created to ensure the Header and Footer persist across all pages.
-*   **Component Reorganization:**
-    *   A `src/pages` directory will be created for page components (`HomePage.tsx`, `ReviewsPage.tsx`, `ContactPage.tsx`).
-    *   The existing Header and Footer will be extracted into their own components (`src/components/Header.tsx`, `src/components/Footer.tsx`).
-*   **Navigation Update:** Header navigation will be updated to use `NavLink` for proper page routing and active link styling.
+*   **Review Detail Page Component:** A new page (`src/pages/ReviewDetailPage.tsx`) will be created to display the full details of a single review.
+*   **Dynamic Routing:** The `ReviewsPage` will link to individual review detail pages using dynamic routes (e.g., `/reviews/:id`).
+*   **Disqus Integration:** The provided Disqus embed code will be integrated into each `ReviewDetailPage`, with dynamic `page.url` and `page.identifier` based on the review ID.
+*   **Navigation:** The review cards on the `ReviewsPage` will be updated to `Link` to their respective detail pages.
 
 **Implementation Details:**
 
-*   **Library:** `react-router-dom`.
-*   **File Structure:** New directories `src/pages` will be created. The main `App.tsx` will be repurposed to handle the routing logic.
-*   **Commit Message:** `refactor: Implement multi-page architecture with React Router`.
+*   **Library:** Existing `react-router-dom` will be used for dynamic routing.
+*   **File Structure:** `src/pages/ReviewDetailPage.tsx` will be created.
+*   **Translations:** Any new text on the detail page will be added to `src/i18n.ts`.
+*   **Styling:** Basic styling will be applied to the detail page.
+*   **Commit Message:** `feat: Add review detail pages with Disqus comments`.
