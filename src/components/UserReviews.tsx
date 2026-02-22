@@ -32,13 +32,14 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
   const [comment, setComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  // Helper to map lang codes to flags
-  const getFlag = (lang?: string) => {
-    switch (lang?.split('-')[0]) {
-      case 'ko': return '🇰🇷';
-      case 'de': return '🇩🇪';
-      case 'en': return '🇺🇸';
-      default: return '🌐';
+  // Helper to map lang codes to flag image URLs
+  const getFlagUrl = (lang?: string) => {
+    const code = lang?.split('-')[0];
+    switch (code) {
+      case 'ko': return 'https://flagcdn.com/w40/kr.png';
+      case 'de': return 'https://flagcdn.com/w40/de.png';
+      case 'en': return 'https://flagcdn.com/w40/us.png';
+      default: return null;
     }
   };
 
@@ -71,7 +72,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
         userName,
         rating,
         comment,
-        lang: i18n.language, // Automatically detect and store the current language
+        lang: i18n.language,
         createdAt: serverTimestamp(),
       });
       setUserName('');
@@ -125,7 +126,13 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
               <div className="review-header">
                 <div className="user-info">
                   <strong>{rev.userName}</strong>
-                  <span className="lang-flag" title={rev.lang}>{getFlag(rev.lang)}</span>
+                  {getFlagUrl(rev.lang) && (
+                    <img 
+                      src={getFlagUrl(rev.lang)} 
+                      alt={rev.lang} 
+                      className="lang-flag-img" 
+                    />
+                  )}
                 </div>
                 <span className="user-rating">{'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}</span>
               </div>
