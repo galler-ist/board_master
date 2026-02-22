@@ -39,7 +39,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
       case 'ko': return 'https://flagcdn.com/w40/kr.png';
       case 'de': return 'https://flagcdn.com/w40/de.png';
       case 'en': return 'https://flagcdn.com/w40/us.png';
-      default: return null;
+      default: return undefined;
     }
   };
 
