@@ -49,9 +49,13 @@ const resources = {
         title: 'Privacy Policy',
         lastUpdated: 'Last Updated: February 22, 2026',
         infoCollectionTitle: 'Information We Collect',
-        infoCollectionDescription: 'We collect information you provide directly to us when you use our services, suchs as when you fill out a contact form or subscribe to a newsletter. This may include your name, email address, and message content.',
+        infoCollectionDescription: 'We collect information you provide directly to us when you use our services, such as when you fill out a contact form or subscribe to a newsletter. This may include your name, email address, and message content.',
         howWeUseInfoTitle: 'How We Use Your Information',
         howWeUseInfoDescription: 'We use the information we collect to provide, maintain, and improve our services, to respond to your inquiries, and to send you service-related communications.',
+        cookiesTitle: 'Cookies and Advertising',
+        cookiesDescription: 'We use cookies to enhance your experience and to analyze site traffic. We also use third-party advertising services, such as Google AdSense, to serve ads when you visit our website. These companies may use information about your visits to this and other websites in order to provide advertisements about goods and services of interest to you. Google\'s use of the advertising cookie enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.',
+        googleAdSenseTitle: 'Google AdSense',
+        googleAdSenseDescription: 'Users may opt out of personalized advertising by visiting Ads Settings. Alternatively, you can opt out of a third-party vendor\'s use of cookies for personalized advertising by visiting www.aboutads.info.',
         dataSecurityTitle: 'Data Security',
         dataSecurityDescription: 'We implement reasonable security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. However, no internet transmission is completely secure.',
         yourRightsTitle: 'Your Rights',
@@ -71,59 +75,78 @@ const resources = {
           title: 'Catan',
           excerpt: 'A game of strategy and resource management. The classic for a reason!',
           fullContent: `
-            Catan, originally published as Settlers of Catan, is a multiplayer board game designed by Klaus Teuber. It was first published in 1995 in Germany and has since sold over 32 million copies in 40 languages.
-            Players take on the role of settlers, attempting to tame the remote but rich isle of Catan. Beginning with two small settlements and two roads, players collect resources (wood, brick, sheep, wheat, and ore) based on the dice roll and the hexagonal terrain tiles adjacent to their settlements.
-            These resources are then used to build new roads, settlements, and cities. The goal is to be the first to reach 10 victory points.
-            Catan is renowned for its blend of strategy, resource management, and negotiation. Its simple rules are easy to learn, but the depth of strategy keeps players engaged for years.
-            The random setup of the board ensures high replayability, as every game presents a new challenge. While luck can play a role due to dice rolls, skilled players can mitigate this through clever trading and strategic placement.
+            <p>Catan, originally published as Settlers of Catan, is a multiplayer board game designed by Klaus Teuber. It was first published in 1995 in Germany and has since sold over 32 million copies in 40 languages.</p>
+            <h3>Gameplay Mechanics</h3>
+            <p>Players take on the role of settlers, attempting to tame the remote but rich isle of Catan. Beginning with two small settlements and two roads, players collect resources (wood, brick, sheep, wheat, and ore) based on the dice roll and the hexagonal terrain tiles adjacent to their settlements. These resources are then used to build new roads, settlements, and cities. The goal is to be the first to reach 10 victory points.</p>
+            <h3>Strategy Guide</h3>
+            <p>Focus on getting a variety of resources early on. Numbers like 6 and 8 are mathematically more likely to roll, so prioritize those spots. Trading is essential; don't be afraid to make deals that benefit you more than your opponents. Building towards the ports can also be a game-winning strategy if you have a surplus of one specific resource.</p>
+            <h3>Final Verdict</h3>
+            <p>Catan is renowned for its blend of strategy, resource management, and negotiation. Its simple rules are easy to learn, but the depth of strategy keeps players engaged for years. The random setup of the board ensures high replayability, as every game presents a new challenge. While luck can play a role due to dice rolls, skilled players can mitigate this through clever trading and strategic placement.</p>
           `,
         },
         wingspan: {
           title: 'Wingspan',
           excerpt: 'A beautiful and engaging engine-building game about birds.',
           fullContent: `
-            Wingspan is a competitive, medium-weight, card-driven, engine-building board game designed by Elizabeth Hargrave and published by Stonemaier Games in 2019. It has received critical acclaim for its beautiful artwork, engaging gameplay, and unique theme.
-            Players are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to their network of wildlife preserves. Each bird you play extends a chain of powerful combinations in one of your three habitats (forest, grassland, and wetland).
-            Each habitat focuses on a key action: gaining food tokens (forest), laying eggs (grassland), or drawing bird cards (wetland). The game features over 170 unique bird cards, each with its own special abilities, beautiful illustrations, and interesting facts.
-            Wingspan is praised for its elegant design, relaxing gameplay, and educational value. It's a game that appeals to both seasoned board gamers and newcomers alike, offering a fresh take on engine-building mechanics.
+            <p>Wingspan is a competitive, medium-weight, card-driven, engine-building board game designed by Elizabeth Hargrave and published by Stonemaier Games in 2019. It has received critical acclaim for its beautiful artwork, engaging gameplay, and unique theme.</p>
+            <h3>Gameplay Mechanics</h3>
+            <p>Players are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to their network of wildlife preserves. Each bird you play extends a chain of powerful combinations in one of your three habitats (forest, grassland, and wetland). Each habitat focuses on a key action: gaining food tokens (forest), laying eggs (grassland), or drawing bird cards (wetland).</p>
+            <h3>Strategy Guide</h3>
+            <p>Look for birds that provide extra resources when activated. Building a strong "engine" in the early game is crucial. Pay attention to the round goals and bonus cards, as they can provide significant victory points. Don't underestimate the power of drawing more bird cards to find the perfect synergy for your preserve.</p>
+            <h3>Final Verdict</h3>
+            <p>Wingspan is praised for its elegant design, relaxing gameplay, and educational value. It's a game that appeals to both seasoned board gamers and newcomers alike, offering a fresh take on engine-building mechanics. The attention to detail in the bird facts and illustrations makes every session a delight.</p>
           `,
         },
         gloomhaven: {
           title: 'Gloomhaven',
           excerpt: 'A cooperative legacy game with a massive world to explore.',
           fullContent: `
-            Gloomhaven is a cooperative legacy board game designed by Isaac Childres and published by Cephalofair Games in 2017. It is a massive, campaign-driven game that combines elements of tactical combat, role-playing, and dungeon crawling.
-            Players take on the role of a group of mercenaries, each with unique abilities and motivations, as they embark on a sprawling campaign filled with challenging scenarios, branching narratives, and difficult decisions. The game features a persistent world that changes based on player choices, with new locations, events, and characters unlocking over time.
-            Combat is tactical and card-driven, requiring careful planning and coordination. The "legacy" aspect means that the game components change permanently as you play, revealing new secrets, unlocking new characters, and evolving the story.
-            Gloomhaven is celebrated for its immersive world, deep strategic combat, and incredible replayability. It's a game that demands a significant time investment but rewards players with an unparalleled cooperative board gaming experience.
+            <p>Gloomhaven is a cooperative legacy board game designed by Isaac Childres and published by Cephalofair Games in 2017. It is a massive, campaign-driven game that combines elements of tactical combat, role-playing, and dungeon crawling.</p>
+            <h3>Gameplay Mechanics</h3>
+            <p>Players take on the role of a group of mercenaries, each with unique abilities and motivations, as they embark on a sprawling campaign filled with challenging scenarios, branching narratives, and difficult decisions. The game features a persistent world that changes based on player choices. Combat is tactical and card-driven, requiring careful planning and coordination.</p>
+            <h3>Strategy Guide</h3>
+            <p>Coordination with your teammates is key. Since you cannot share specific card values, you must communicate your general intentions. Manage your hand carefully to avoid exhaustion; sometimes a "short rest" is better than a "long rest" to keep the momentum going. Focus on upgrading your cards with enhancements to stay ahead of the increasing difficulty.</p>
+            <h3>Final Verdict</h3>
+            <p>Gloomhaven is celebrated for its immersive world, deep strategic combat, and incredible replayability. It's a game that demands a significant time investment but rewards players with an unparalleled cooperative board gaming experience. It's widely considered one of the best board games ever made.</p>
           `,
         },
         terraformingMars: {
           title: 'Terraforming Mars',
           excerpt: 'A strategic game about corporations terraforming Mars.',
           fullContent: `
-            Terraforming Mars is a board game for 1 to 5 players designed by Jacob Fryxelius and published by FryxGames in 2016. In the game, players take on the role of powerful corporations, working together to terraform the planet Mars by raising the temperature, increasing the oxygen level, and covering the planet with ocean.
-            Players achieve these goals by playing project cards, which represent various technologies, resource production, and actions. Each project card has requirements that must be met to play it, such as a certain temperature or oxygen level.
-            The game features a high degree of strategic depth, with players needing to balance their own corporate objectives with the overarching goal of terraforming Mars. The interaction between players is primarily indirect, through competition for resources and placement of tiles on the board.
-            Terraforming Mars is praised for its thematic integration, strategic complexity, and high replayability. It offers a satisfying blend of engine-building, tableau building, and area control, making it a favorite among Eurogame enthusiasts.
+            <p>Terraforming Mars is a board game for 1 to 5 players designed by Jacob Fryxelius and published by FryxGames in 2016. Players take on the role of powerful corporations working together to terraform the planet Mars.</p>
+            <h3>Gameplay Mechanics</h3>
+            <p>Players achieve goals by raising the temperature, increasing oxygen levels, and covering the planet with ocean. This is done by playing project cards, which represent various technologies and resource production. The game features a high degree of strategic depth, balancing corporate objectives with the overarching goal of terraforming.</p>
+            <h3>Strategy Guide</h3>
+            <p>Early game should focus on increasing your production of basic resources like MegaCredits and Steel. Don't hoard cards; only buy what you know you can play soon. Milestones and Awards are a "race" for points, so keep an eye on your opponents' progress and jump on them when you have the chance.</p>
+            <h3>Final Verdict</h3>
+            <p>Terraforming Mars is praised for its thematic integration, strategic complexity, and high replayability. It offers a satisfying blend of engine-building, tableau building, and area control, making it a favorite among Eurogame enthusiasts worldwide.</p>
           `,
         },
         root: {
           title: 'Root',
           excerpt: 'A game of adventure and war in a vast wilderness.',
           fullContent: `
-            Root is a game of adventure and war in a vast wilderness where players embody one of four factions, each with its own unique gameplay mechanics and victory conditions. Designed by Cole Wehrle and published by Leder Games in 2017, Root features asymmetric gameplay, where each faction plays by fundamentally different rules.
-            The Marquise de Cat occupies the forest and seeks to industrialize it. The Eyrie Dynasties must command the respect of the old regime. The Woodland Alliance works to gather supporters and spark a rebellion. And the Vagabond plays all sides, fulfilling quests and manipulating the conflict for personal gain.
-            Root is celebrated for its highly asymmetric design, rich thematic integration, and beautiful artwork. It offers a unique blend of strategic depth and player interaction, making every game a dynamic and memorable experience. The game's intricate rules can be challenging to learn, but the rewarding gameplay makes it worthwhile for dedicated players.
+            <p>Root is a game of adventure and war in a vast wilderness where players embody one of four factions, each with its own unique gameplay mechanics and victory conditions. Designed by Cole Wehrle, it features highly asymmetric gameplay.</p>
+            <h3>Gameplay Mechanics</h3>
+            <p>The Marquise de Cat occupies the forest and seeks to industrialize it. The Eyrie Dynasties must command the respect of the old regime. The Woodland Alliance works to gather supporters and spark a rebellion. And the Vagabond plays all sides for personal gain. Each faction plays by fundamentally different rules.</p>
+            <h3>Strategy Guide</h3>
+            <p>Know your faction's specific strengths and weaknesses. The Marquise needs to protect their supply lines, while the Eyrie must manage their "Decree" carefully to avoid turmoil. As the Woodland Alliance, stay hidden until you have enough support to explode onto the board. The Vagabond should focus on exploring and helping/hindering others to gain items.</p>
+            <h3>Final Verdict</h3>
+            <p>Root is celebrated for its highly asymmetric design, rich thematic integration, and beautiful artwork. It offers a unique blend of strategic depth and player interaction, making every game a dynamic experience. It has a steep learning curve but is incredibly rewarding for dedicated players.</p>
           `,
         },
         spiritIsland: {
           title: 'Spirit Island',
           excerpt: 'A cooperative game of elemental spirits defending their island home.',
           fullContent: `
-            Spirit Island is a cooperative, highly thematic strategy game designed by R. Eric Reuss and published by Greater Than Games in 2017. Players take on the role of powerful nature spirits, working together to defend their sacred island from invading colonial powers.
-            Each spirit has unique elemental powers and a distinct playstyle. Players grow their powers, gain new abilities, and work to blight the land and drive the invaders from the island. The game features an innovative system where player actions have both immediate and long-term consequences, requiring careful planning and coordination.
-            Spirit Island is renowned for its deep strategic gameplay, high replayability, and challenging difficulty. It offers a fresh take on cooperative board gaming, with players actively working against a complex and evolving invader system. The game's rich theme and diverse spirits ensure that every playthrough feels unique and engaging.
+            <p>Spirit Island is a cooperative, highly thematic strategy game designed by R. Eric Reuss. Players take on the role of powerful nature spirits working together to defend their island from invading colonial powers.</p>
+            <h3>Gameplay Mechanics</h3>
+            <p>Each spirit has unique elemental powers and a distinct playstyle. Players grow their powers and work to blight the land and drive the invaders from the island. It features an innovative system where player actions have both immediate and long-term consequences.</p>
+            <h3>Strategy Guide</h3>
+            <p>Communication is vital. Plan your turns together to cover different areas of the island. Focus on "Fear" as a win condition; driving the invaders away through terror is often easier than destroying every single building. Use your innate powers as much as possible by matching your elemental icons.</p>
+            <h3>Final Verdict</h3>
+            <p>Spirit Island is renowned for its deep strategic gameplay, high replayability, and challenging difficulty. It offers a fresh take on cooperative board gaming, with players actively working against a complex invader system. A must-play for fans of complex strategy games.</p>
           `,
         },
       },

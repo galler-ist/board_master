@@ -15,6 +15,12 @@ const PrivacyPolicyPage: React.FC = () => {
       <h3>{t('privacy.howWeUseInfoTitle')}</h3>
       <p>{t('privacy.howWeUseInfoDescription')}</p>
 
+      <h3>{t('privacy.cookiesTitle')}</h3>
+      <p>{t('privacy.cookiesDescription')}</p>
+
+      <h3>{t('privacy.googleAdSenseTitle')}</h3>
+      <p>{t('privacy.googleAdSenseDescription')}</p>
+
       <h3>{t('privacy.dataSecurityTitle')}</h3>
       <p>{t('privacy.dataSecurityDescription')}</p>
 
