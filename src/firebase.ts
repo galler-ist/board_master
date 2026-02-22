@@ -2,15 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
+// Use environment variables for security and flexibility
 const firebaseConfig = {
-  apiKey: "AIzaSyCNWW1rhnODBHMpJmmwRstzkNUyXRLIfEU",
-  authDomain: "board-master-c7fae.firebaseapp.com",
-  projectId: "board-master-c7fae",
-  storageBucket: "board-master-c7fae.firebasestorage.app",
-  messagingSenderId: "777009965364",
-  appId: "1:777009965364:web:54138c3fc3ebb081159d61",
-  measurementId: "G-M44SXNW3HV"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
