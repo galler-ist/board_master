@@ -1,16 +1,19 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
-// TODO: Replace with your actual Firebase config from Firebase Console
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD-mock-api-key", // Placeholder
-  authDomain: "board-master-demo.firebaseapp.com",
-  projectId: "board-master-demo",
-  storageBucket: "board-master-demo.firebasestorage.app",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:abcdef1234567890"
+  apiKey: "AIzaSyCNWW1rhnODBHMpJmmwRstzkNUyXRLIfEU",
+  authDomain: "board-master-c7fae.firebaseapp.com",
+  projectId: "board-master-c7fae",
+  storageBucket: "board-master-c7fae.firebasestorage.app",
+  messagingSenderId: "777009965364",
+  appId: "1:777009965364:web:54138c3fc3ebb081159d61",
+  measurementId: "G-M44SXNW3HV"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
