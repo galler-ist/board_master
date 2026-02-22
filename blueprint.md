@@ -10,33 +10,28 @@ The project uses a multi-page architecture with React Router, supporting i18n an
 
 ## Development Plan
 
-### Phase 1-6 (Completed)
+### Phase 1-7 (Completed)
 
--   Homepage, i18n, Theme Toggle, Contact Form, Multi-page architecture, and Review Detail Pages are implemented. Disqus integration was reverted.
+-   Homepage, i18n, Theme Toggle, Contact Form, Multi-page architecture, Review Detail Pages, and Google AdSense script integration are implemented.
 
-### Phase 7: Google AdSense Integration (Script Added) (Completed)
+### Phase 8: AdSense Review Preparation - Content & Info Pages (Completed)
 
--   **Status:** Script added to `index.html`.
+-   **Status:** "About Us" and "Privacy Policy" pages added; `ReviewsPage` content enriched.
 
-### Phase 8: AdSense Review Preparation - Content & Info Pages
+### Phase 9: Dynamic Content Internationalization (Game Data)
 
-**Objective:** Enhance site quality and trustworthiness to improve chances of Google AdSense approval, based on AdSense guidelines. This includes enriching content and adding essential legal/info pages.
+**Objective:** Refactor game review data to be translatable using the existing `i18next` system, making game titles, excerpts, and full content dynamically switchable based on the selected language.
 
 **Key Features:**
 
-*   **Enriched Content (Reviews):** Added more dummy review content to the `ReviewsPage`, including specific Unsplash images.
-*   **"About Us" Page:** A dedicated page explaining the site's purpose and mission.
-*   **"Privacy Policy" Page:** A page outlining the site's privacy practices, crucial for compliance and trustworthiness.
+*   **Externalized Game Data:** Move `allReviews` array from page components to a dedicated data file.
+*   **i18n Key Integration:** Replace hardcoded game titles, excerpts, and full content with `i18next` translation keys.
+*   **Centralized Translations:** Add game-specific content translations to `src/i18n.ts`.
 
 **Implementation Details:**
 
-*   **File Creation:**
-    *   `src/pages/AboutPage.tsx`
-    *   `src/pages/PrivacyPolicyPage.tsx`
+*   **File Creation:** `src/data/games.ts` to store game metadata (ID, rating, image, and translation keys).
 *   **File Modification:**
-    *   `src/pages/ReviewsPage.tsx` (more dummy data with specific Unsplash images)
-    *   `src/App.tsx` (new routes)
-    *   `src/components/Header.tsx` (new "About Us" navigation link)
-    *   `src/components/Footer.tsx` (new "Privacy Policy" link)
-    *   `src/i18n.ts` (new translation keys)
-*   **Commit Message:** `feat: AdSense review preparation - content & info pages`.
+    *   `src/pages/ReviewsPage.tsx` and `src/pages/ReviewDetailPage.tsx` to import data from `src/data/games.ts` and use `t()` for translatable content.
+    *   `src/i18n.ts` to include extensive translation entries for each game's title, excerpt, and full content across all supported languages (EN, KO, DE).
+*   **Commit Message:** `feat: Make game content translatable via i18n`.
