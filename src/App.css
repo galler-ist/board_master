@@ -38,6 +38,11 @@
   font-size: 1rem;
 }
 
+.app-header nav a.active {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
 .header-controls {
   display: flex;
   align-items: center;
