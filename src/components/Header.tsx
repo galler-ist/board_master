@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme'; // Updated import path
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // Dummy data - In a real app, you would fetch this from an API
@@ -100,8 +100,7 @@ const ReviewDetailPage: React.FC = () => {
       <img src={review.image} alt={review.title} className="review-detail-image" />
       <h2>{review.title}</h2>
       <div className="rating">{'★'.repeat(Math.floor(review.rating))}{'☆'.repeat(5 - Math.floor(review.rating))} ({review.rating})</div>
-      <div className="review-full-content" dangerouslySetInnerHTML={{ __html: review.fullContent.replace(/
-/g, '<br />') }} />
+      <div className="review-full-content" dangerouslySetInnerHTML={{ __html: review.fullContent.replace(/\n/g, '<br />') }} />
 
       <div id="disqus_thread" style={{ marginTop: '3rem' }}></div>
       <noscript>{t('disqus.noscript')}</noscript>
