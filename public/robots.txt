@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://board-master-demo.web.app/sitemap.xml
+Sitemap: https://board-master-b7j.pages.dev/sitemap.xml
