@@ -408,6 +408,16 @@ nav a:hover, nav a.active {
   margin-bottom: 0.5rem;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-flag {
+  font-size: 1.2rem;
+}
+
 .user-rating {
   color: #FBBF24;
 }

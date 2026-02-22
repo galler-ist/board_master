@@ -17,6 +17,7 @@ interface Review {
   rating: number;
   comment: string;
   createdAt: any;
+  lang?: string;
 }
 
 interface UserReviewsProps {
@@ -24,12 +25,22 @@ interface UserReviewsProps {
 }
 
 const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [userName, setUserName] = useState('');
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  // Helper to map lang codes to flags
+  const getFlag = (lang?: string) => {
+    switch (lang?.split('-')[0]) {
+      case 'ko': return '🇰🇷';
+      case 'de': return '🇩🇪';
+      case 'en': return '🇺🇸';
+      default: return '🌐';
+    }
+  };
 
   useEffect(() => {
     const q = query(
@@ -60,6 +71,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
         userName,
         rating,
         comment,
+        lang: i18n.language, // Automatically detect and store the current language
         createdAt: serverTimestamp(),
       });
       setUserName('');
@@ -111,7 +123,10 @@ const UserReviews: React.FC<UserReviewsProps> = ({ gameId }) => {
           reviews.map((rev) => (
             <div key={rev.id} className="user-review-item">
               <div className="review-header">
-                <strong>{rev.userName}</strong>
+                <div className="user-info">
+                  <strong>{rev.userName}</strong>
+                  <span className="lang-flag" title={rev.lang}>{getFlag(rev.lang)}</span>
+                </div>
                 <span className="user-rating">{'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}</span>
               </div>
               <p>{rev.comment}</p>
