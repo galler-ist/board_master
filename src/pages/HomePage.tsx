@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,7 +19,9 @@ const HomePage: React.FC = () => {
         <div className="container">
           <h2>{t('hero.title')}</h2>
           <p>{t('hero.subtitle')}</p>
-          <button className="cta-button">{t('hero.button')}</button>
+          <Link to="/reviews" className="cta-button">
+            {t('hero.button')}
+          </Link>
         </div>
       </section>
     </>
