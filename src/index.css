@@ -225,11 +225,22 @@ nav a:hover, nav a.active {
   background-color: var(--surface-color);
   border-top: 1px solid var(--border-color);
   color: var(--text-muted);
-  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.bgg-attribution {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
 }
 
 .social-links {
-  margin-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
