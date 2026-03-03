@@ -15,9 +15,7 @@ const Footer: React.FC = () => {
               <img 
                 src={bggLogo} 
                 alt="Powered by BoardGameGeek" 
-                style={{ height: '35px', opacity: 0.8, transition: 'opacity 0.3s' }}
-                onMouseOver={(e) => (e.currentTarget.style.opacity = '1')}
-                onMouseOut={(e) => (e.currentTarget.style.opacity = '0.8')}
+                style={{ height: '30px', display: 'block' }} 
               />
             </a>
           </div>
