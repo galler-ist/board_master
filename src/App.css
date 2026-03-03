@@ -195,6 +195,92 @@
   box-shadow: 0 8px 25px rgba(108, 66, 239, 0.5);
 }
 
+/* Search Form */
+.search-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: var(--surface-color);
+  padding: 0.5rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  outline: none;
+}
+
+.search-results {
+  background: var(--surface-color);
+  max-width: 600px;
+  margin: 1rem auto;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.search-results h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='light'] .search-results li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.search-results li:last-child {
+  border-bottom: none;
+}
+
+.search-results a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s;
+  display: block;
+}
+
+.search-results a:hover {
+  color: var(--primary-color);
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.secondary-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
 /* Featured Reviews */
 .featured-reviews {
   padding: 5rem 0;

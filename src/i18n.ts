@@ -17,6 +17,15 @@ const resources = {
         subtitle: 'In-depth reviews, strategy guides, and more from passionate gamers.',
         button: 'Browse All Reviews',
       },
+      search: {
+        placeholder: 'Search for a board game...',
+        button: 'Search',
+        results: 'Search Results',
+      },
+      common: {
+        loading: 'Loading...',
+        error: 'Error',
+      },
       featured: {
         title: 'Featured Reviews',
       },
@@ -47,6 +56,7 @@ const resources = {
         wrongPassword: 'Incorrect password. Deletion failed.',
         deleteConfirm: 'Are you sure you want to delete this review?',
         deleteSuccess: 'Review deleted successfully.',
+        selectGamePrompt: 'Please search for a board game to write a review:',
       },
       disqus: {
         noscript: 'Please enable JavaScript to view the comments powered by Disqus.',
@@ -210,6 +220,7 @@ const resources = {
         wrongPassword: '비밀번호가 일치하지 않습니다. 삭제에 실패했습니다.',
         deleteConfirm: '정말 이 리뷰를 삭제하시겠습니까?',
         deleteSuccess: '리뷰가 성공적으로 삭제되었습니다.',
+        selectGamePrompt: '리뷰를 작성할 보드게임을 검색해 주세요:',
       },
       disqus: {
         noscript: 'Disqus에서 제공하는 댓글을 보려면 JavaScript를 활성화하십시오.',
@@ -337,6 +348,22 @@ const resources = {
         backToReviews: 'Zurück zu Bewertungen',
         notFound: 'Bewertung nicht gefunden',
         notFoundDescription: 'Die gesuchte Bewertung existiert nicht.',
+      },
+      reviews: {
+        userReviewsTitle: 'Nutzerbewertungen & Feedback',
+        namePlaceholder: 'Ihr Name',
+        passwordPlaceholder: 'Passwort (zum Löschen)',
+        stars: 'Sterne',
+        commentPlaceholder: 'Was halten Sie von diesem Spiel?',
+        submitReview: 'Meine Bewertung posten',
+        submitting: 'Wird gepostet...',
+        noReviews: 'Niemand hat dieses Spiel bisher bewertet. Sei der Erste!',
+        delete: 'Löschen',
+        passwordPrompt: 'Bitte geben Sie das Passwort ein, um diese Bewertung zu löschen:',
+        wrongPassword: 'Falsches Passwort. Löschen fehlgeschlagen.',
+        deleteConfirm: 'Sind Sie sicher, dass Sie diese Bewertung löschen möchten?',
+        deleteSuccess: 'Bewertung erfolgreich gelöscht.',
+        selectGamePrompt: 'Bitte suchen Sie nach einem Brettspiel, um eine Bewertung zu schreiben:',
       },
       disqus: {
         noscript: 'Bitte aktivieren Sie JavaScript, um die von Disqus bereitgestellten Kommentare anzuzeigen.',

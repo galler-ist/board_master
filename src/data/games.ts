@@ -1,6 +1,7 @@
 // src/data/games.ts
 export interface GameReview {
   id: number;
+  bggId: number;
   titleKey: string;
   rating: number;
   excerptKey: string;
@@ -11,6 +12,7 @@ export interface GameReview {
 export const allReviews: GameReview[] = [
   {
     id: 1,
+    bggId: 13,
     titleKey: 'game.catan.title',
     rating: 4.5,
     excerptKey: 'game.catan.excerpt',
@@ -19,6 +21,7 @@ export const allReviews: GameReview[] = [
   },
   {
     id: 2,
+    bggId: 266192,
     titleKey: 'game.wingspan.title',
     rating: 5,
     excerptKey: 'game.wingspan.excerpt',
@@ -27,6 +30,7 @@ export const allReviews: GameReview[] = [
   },
   {
     id: 3,
+    bggId: 174430,
     titleKey: 'game.gloomhaven.title',
     rating: 4.8,
     excerptKey: 'game.gloomhaven.excerpt',
@@ -35,6 +39,7 @@ export const allReviews: GameReview[] = [
   },
   {
     id: 4,
+    bggId: 167791,
     titleKey: 'game.terraformingMars.title',
     rating: 4.7,
     excerptKey: 'game.terraformingMars.excerpt',
@@ -43,6 +48,7 @@ export const allReviews: GameReview[] = [
   },
   {
     id: 5,
+    bggId: 237182,
     titleKey: 'game.root.title',
     rating: 4.6,
     excerptKey: 'game.root.excerpt',
@@ -51,6 +57,7 @@ export const allReviews: GameReview[] = [
   },
   {
     id: 6,
+    bggId: 162886,
     titleKey: 'game.spiritIsland.title',
     rating: 4.9,
     excerptKey: 'game.spiritIsland.excerpt',

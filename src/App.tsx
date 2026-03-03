@@ -6,8 +6,9 @@ import HomePage from './pages/HomePage';
 import ReviewsPage from './pages/ReviewsPage';
 import ContactPage from './pages/ContactPage';
 import ReviewDetailPage from './pages/ReviewDetailPage';
-import AboutPage from './pages/AboutPage'; // Import AboutPage
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage'; // Import PrivacyPolicyPage
+import BGGGamePage from './pages/BGGGamePage';
+import AboutPage from './pages/AboutPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import './App.css';
 
 // Main Layout component
@@ -32,10 +33,10 @@ const App: React.FC = () => {
             <Route index element={<HomePage />} />
             <Route path="reviews" element={<ReviewsPage />} />
             <Route path="reviews/:id" element={<ReviewDetailPage />} />
+            <Route path="game/:bggId" element={<BGGGamePage />} />
             <Route path="contact" element={<ContactPage />} />
-            <Route path="about" element={<AboutPage />} /> {/* New route for AboutPage */}
-            <Route path="privacy" element={<PrivacyPolicyPage />} /> {/* New route for PrivacyPolicyPage */}
-            {/* Add more routes here as needed */}
+            <Route path="about" element={<AboutPage />} />
+            <Route path="privacy" element={<PrivacyPolicyPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
