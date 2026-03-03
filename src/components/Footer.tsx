@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import bggLogo from '../assets/powered-by-bgg-rgb.svg';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -12,9 +13,9 @@ const Footer: React.FC = () => {
           <div className="bgg-attribution">
             <a href="https://boardgamegeek.com" target="_blank" rel="noopener noreferrer">
               <img 
-                src="https://cf.geekdo-images.com/pub/powered_by_bgg.png" 
+                src={bggLogo} 
                 alt="Powered by BoardGameGeek" 
-                style={{ height: '40px', opacity: 0.8, transition: 'opacity 0.3s' }}
+                style={{ height: '35px', opacity: 0.8, transition: 'opacity 0.3s' }}
                 onMouseOver={(e) => (e.currentTarget.style.opacity = '1')}
                 onMouseOut={(e) => (e.currentTarget.style.opacity = '0.8')}
               />
