@@ -1,10 +1,7 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 
 const TermsPage: React.FC = () => {
-  const { t } = useTranslation();
-
   return (
     <>
       <Helmet>
