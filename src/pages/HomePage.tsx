@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { searchGames } from '../services/bggService';
 import type { BGGSearchResult } from '../services/bggService';
+import { allReviews } from '../data/games';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -66,6 +67,37 @@ const HomePage: React.FC = () => {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* 추가된 추천 콘텐츠 섹션 */}
+      <section className="featured-content container" style={{ padding: '4rem 0' }}>
+        <h3 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>
+          {t('home.featuredTitle', 'Recommended Board Games')}
+        </h3>
+        <div className="reviews-grid">
+          {/* 정적 데이터 중 일부를 홈 화면에 노출하여 봇이 콘텐츠를 즉시 발견하게 함 */}
+          {[1, 2, 3].map((id) => {
+            const review = allReviews.find(r => r.id === id);
+            if (!review) return null;
+            return (
+              <div key={review.id} className="review-card">
+                <img src={review.image} alt={t(review.titleKey)} className="review-card-img" />
+                <div className="review-card-content">
+                  <h4>{t(review.titleKey)}</h4>
+                  <div className="rating">{'★'.repeat(Math.floor(review.rating))} ({review.rating})</div>
+                  <p>{t(review.excerptKey)}</p>
+                  <Link to={`/reviews/${review.id}`} className="read-more">Read More &rarr;</Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+            {t('home.moreDescription', 'Explore hundreds of board game reviews and community ratings.')}
+          </p>
+        </div>
+
       </section>
     </>
   );

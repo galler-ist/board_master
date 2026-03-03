@@ -174,6 +174,26 @@ const resources = {
             <p>Spirit Island is renowned for its deep strategic gameplay, high replayability, and challenging difficulty. It offers a fresh take on cooperative board gaming, with players actively working against a complex invader system. A must-play for fans of complex strategy games.</p>
           `,
         },
+        agricola: {
+          title: 'Agricola',
+          excerpt: 'A challenging farming simulation game of building and growing your estate.',
+          fullContent: '<p>Agricola is a classic worker placement game where you are a farmer in a wooden shack with your spouse and little else. On a turn, you get to take only two actions, one for you and one for the spouse, from all the possibilities you\'ll find on a farm: collecting clay, wood, or stone; building fences; and so on. You might think about having kids in order to get more work done, but first you need to expand your house. And what are you going to feed all the little mouths?</p>',
+        },
+        puertoRico: {
+          title: 'Puerto Rico',
+          excerpt: 'Develop the island of Puerto Rico and become the most successful governor.',
+          fullContent: '<p>In Puerto Rico, players take on the roles of colonial governors on the island of Puerto Rico. The aim of the game is to amass victory points by shipping goods to Europe or by constructing buildings. Each player uses a separate board with spaces for buildings, plantations, and resources. Shared between the players are three ships, a trading house, and a supply of resources and doubloons.</p>',
+        },
+        caverna: {
+          title: 'Caverna: The Cave Farmers',
+          excerpt: 'Cultivate your farm and expand your cave in this spiritual successor to Agricola.',
+          fullContent: '<p>Following in the footsteps of Agricola, Caverna: The Cave Farmers is a worker-placement game at its core, with a focus on farming. In the game, you are the bearded leader of a small dwarf family which lives in a little cave in the mountains. You begin the game with a farmer and his spouse, and each member of the farming family represents an action that the player can take each turn.</p>',
+        },
+        brassBirmingham: {
+          title: 'Brass: Birmingham',
+          excerpt: 'An economic strategy game set during the Industrial Revolution in England.',
+          fullContent: '<p>Brass: Birmingham is an economic strategy game sequel to Martin Wallace\'s 2007 masterpiece, Brass. Birmingham tells the story of competing entrepreneurs in Birmingham during the industrial revolution, between the years 1770-1870. As in its predecessor, you must develop, build, and establish your industries and network, in an effort to exploit low or high demands for iron, coal, and cotton.</p>',
+        },
       },
     },
   },
@@ -317,6 +337,26 @@ const resources = {
             테라포밍 마스는 테마 통합, 전략적 복잡성, 높은 리플레이성으로 칭찬받습니다. 엔진 빌딩, 태블로 빌딩, 영역 제어의 만족스러운 조합을 제공하여 유로게임 애호가들 사이에서 인기가 높습니다.
           `,
         },
+        agricola: {
+          title: '아그리콜라',
+          excerpt: '농장을 일구고 가축을 키우는 클래식 일꾼 놓기 게임.',
+          fullContent: '<p>아그리콜라는 보드게임의 고전으로 불리는 일꾼 놓기 게임입니다. 플레이어는 중세 시대의 농부가 되어 자신의 가족을 먹여 살리고 농장을 확장해야 합니다.</p>',
+        },
+        puertoRico: {
+          title: '푸에르토 리코',
+          excerpt: '신대륙의 총독이 되어 최고의 도시를 건설하세요.',
+          fullContent: '<p>푸에르토 리코는 각 플레이어가 돌아가며 역할을 선택하고, 그에 따른 액션을 수행하는 전략 게임의 정수입니다.</p>',
+        },
+        caverna: {
+          title: '카베르나',
+          excerpt: '동굴 속 드워프 가족의 평화로운 농경 생활.',
+          fullContent: '<p>아그리콜라의 정신적 후속작으로, 동굴을 파고 농사를 지으며 가족을 부양하는 게임입니다.</p>',
+        },
+        brassBirmingham: {
+          title: '브라스: 버밍엄',
+          excerpt: '산업 혁명 시대 영국의 경제 패권을 장악하세요.',
+          fullContent: '<p>운하와 철도를 건설하여 산업을 발전시키는 깊이 있는 경제 전략 게임입니다.</p>',
+        },
       },
     },
   },
@@ -457,6 +497,26 @@ const resources = {
             Jeder Geist hat einzigartige elementare Kräfte und einen ausgeprägten Spielstil. Spieler erweitern ihre Kräfte, erhalten neue Fähigkeiten und arbeiten daran, das Land zu verunreinigen und die Eindringlinge von der Insel zu vertreiben. Das Spiel verfügt über ein innovatives System, bei dem die Aktionen der Spieler sowohl unmittelbare als auch langfristige Konsequenzen haben, was sorgfältige Planung und Koordination erfordert.
             Geisterinsel ist bekannt für sein tiefgründiges strategisches Gameplay, seine hohe Wiederspielbarkeit und seinen herausfordernden Schwierigkeitsgrad. Es bietet eine frische Interpretation des kooperativen Brettspiels, bei dem die Spieler aktiv gegen ein komplexes und sich entwickelndes Eindringlingssystem arbeiten. Das reiche Thema des Spiel und die vielfältigen Geister sorgen dafür, dass jedes Spiel einzigartig und fesselnd ist.
           `,
+        },
+        agricola: {
+          title: 'Agricola',
+          excerpt: 'Ein herausforderndes Landwirtschafts-Simulationsspiel.',
+          fullContent: '<p>Agricola ist ein klassisches Worker-Placement-Spiel, bei dem du ein Bauer in einer Holzhütte bist.</p>',
+        },
+        puertoRico: {
+          title: 'Puerto Rico',
+          excerpt: 'Entwickle die Insel Puerto Rico und werde der erfolgreichste Gouverneur.',
+          fullContent: '<p>In Puerto Rico übernehmen die Spieler die Rollen von Kolonialgouverneuren auf der Insel Puerto Rico.</p>',
+        },
+        caverna: {
+          title: 'Caverna: Die Höhlenbauern',
+          excerpt: 'Kultiviere deinen Bauernhof und erweitere deine Höhle.',
+          fullContent: '<p>In Caverna bist du der bärtige Anführer einer kleinen Zwergenfamilie.</p>',
+        },
+        brassBirmingham: {
+          title: 'Brass: Birmingham',
+          excerpt: 'Ein Wirtschaftsstrategiespiel während der industriellen Revolution in England.',
+          fullContent: '<p>Brass: Birmingham ist die Fortsetzung von Martin Wallaces Meisterwerk von 2007, Brass.</p>',
         },
       },
     },

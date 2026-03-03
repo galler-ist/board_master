@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="social-links">
             <Link to="/privacy">{t('privacy.title')}</Link>
+            <Link to="/terms">Terms of Service</Link>
             <a href="#">Twitter</a>
             <a href="#">Instagram</a>
             <a href="#">Facebook</a>
