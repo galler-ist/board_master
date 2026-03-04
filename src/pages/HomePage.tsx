@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
               <ul>
                 {results.map(result => (
                   <li key={result.id}>
-                    <Link to={`/game/${result.id}`}>
+                    <Link to={`/games/${result.id}`}>
                       {result.name} {result.yearpublished ? `(${result.yearpublished})` : ''}
                     </Link>
                   </li>
@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
           )}
 
           <div style={{ marginTop: '2rem' }}>
-            <Link to="/reviews" className="secondary-button">
+            <Link to="/games" className="secondary-button">
               {t('hero.button')}
             </Link>
           </div>
@@ -86,7 +86,7 @@ const HomePage: React.FC = () => {
                   <h4>{t(review.titleKey)}</h4>
                   <div className="rating">{'★'.repeat(Math.floor(review.rating))} ({review.rating})</div>
                   <p>{t(review.excerptKey)}</p>
-                  <Link to={`/reviews/${review.id}`} className="read-more">Read More &rarr;</Link>
+                  <Link to={`/games/${review.bggId}`} className="read-more">Read More &rarr;</Link>
                 </div>
               </div>
             );

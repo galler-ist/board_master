@@ -8,14 +8,14 @@ const resources = {
     translation: {
       nav: {
         home: 'Home',
-        reviews: 'Reviews',
+        gameList: 'Games',
         contact: 'Contact Us',
-        about: 'About Us', // New nav link
+        about: 'About Us',
       },
       hero: {
         title: 'Discover Your Next Favorite Board Game',
         subtitle: 'In-depth reviews, strategy guides, and more from passionate gamers.',
-        button: 'Browse All Reviews',
+        button: 'Browse Games',
       },
       search: {
         placeholder: 'Search for a board game...',
@@ -27,7 +27,7 @@ const resources = {
         error: 'Error',
       },
       featured: {
-        title: 'Featured Reviews',
+        title: 'Featured Games',
       },
       contact: {
         title: 'Partnership Inquiry',
@@ -37,10 +37,11 @@ const resources = {
         messageLabel: 'Your Message',
         submitButton: 'Send Message',
       },
-      reviewDetail: {
-        backToReviews: 'Back to Reviews',
-        notFound: 'Review Not Found',
-        notFoundDescription: 'The review you are looking for does not exist.',
+      gameDetail: {
+        backToList: 'Back to Games',
+        notFound: 'Game Not Found',
+        notFoundDescription: 'The game you are looking for does not exist.',
+        backToHome: 'Back to Home',
       },
       reviews: {
         userReviewsTitle: 'User Reviews & Feedback',
@@ -201,17 +202,17 @@ const resources = {
     translation: {
       nav: {
         home: '홈',
-        reviews: '리뷰',
+        gameList: '게임 목록',
         contact: '문의하기',
         about: '회사소개',
       },
       hero: {
         title: '인생 보드게임을 찾아보세요',
         subtitle: '열정적인 게이머들의 심층 리뷰, 전략 가이드 등을 만나보세요.',
-        button: '모든 리뷰 보기',
+        button: '게임 목록 보기',
       },
       featured: {
-        title: '추천 리뷰',
+        title: '추천 게임',
       },
       contact: {
         title: '제휴 문의',
@@ -221,10 +222,11 @@ const resources = {
         messageLabel: '메시지',
         submitButton: '메시지 보내기',
       },
-      reviewDetail: {
-        backToReviews: '리뷰 목록으로 돌아가기',
-        notFound: '리뷰를 찾을 수 없습니다',
-        notFoundDescription: '찾으시는 리뷰가 존재하지 않습니다.',
+      gameDetail: {
+        backToList: '게임 목록으로 돌아가기',
+        notFound: '게임을 찾을 수 없습니다',
+        notFoundDescription: '찾으시는 게임이 존재하지 않습니다.',
+        backToHome: '홈으로 돌아가기',
       },
       reviews: {
         userReviewsTitle: '유저 리뷰 및 피드백',

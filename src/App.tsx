@@ -4,10 +4,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import HomePage from './pages/HomePage';
-import ReviewsPage from './pages/ReviewsPage';
-import ContactPage from './pages/ContactPage';
-import ReviewDetailPage from './pages/ReviewDetailPage';
+import GamesPage from './pages/GamesPage';
 import BGGGamePage from './pages/BGGGamePage';
+import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
@@ -34,9 +33,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="reviews" element={<ReviewsPage />} />
-            <Route path="reviews/:id" element={<ReviewDetailPage />} />
-            <Route path="game/:bggId" element={<BGGGamePage />} />
+            <Route path="games" element={<GamesPage />} />
+            <Route path="games/:bggId" element={<BGGGamePage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="privacy" element={<PrivacyPolicyPage />} />

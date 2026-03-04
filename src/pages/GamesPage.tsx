@@ -7,7 +7,7 @@ import { getMultipleGameDetails } from '../services/bggService';
 import type { BGGGameDetails } from '../services/bggService';
 import UserReviews from '../components/UserReviews';
 
-const ReviewsPage: React.FC = () => {
+const GamesPage: React.FC = () => {
   const { t } = useTranslation();
   const [bggData, setBggData] = useState<Record<number, BGGGameDetails>>({});
   const [loading, setLoading] = useState(true);
@@ -26,10 +26,10 @@ const ReviewsPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{t('nav.reviews')} | Board Master</title>
+        <title>{t('nav.gameList')} | Board Master</title>
         <meta name="description" content="Explore our in-depth board game reviews and ratings. Find your next favorite game today!" />
       </Helmet>
-      <section id="reviews" className="featured-reviews">
+      <section id="games" className="featured-reviews">
         <div className="container">
           <h3>{t('featured.title')}</h3>
           {loading ? (
@@ -51,7 +51,7 @@ const ReviewsPage: React.FC = () => {
                       <h4>{displayTitle}</h4>
                       <div className="rating">{'★'.repeat(Math.floor(review.rating))}{'☆'.repeat(5 - Math.floor(review.rating))} ({review.rating})</div>
                       <p dangerouslySetInnerHTML={{ __html: displayDescription }} />
-                      <Link to={`/reviews/${review.id}`} className="read-more">Read More &rarr;</Link>
+                      <Link to={`/games/${review.bggId}`} className="read-more">Read More &rarr;</Link>
                     </div>
                   </div>
                 );
@@ -68,4 +68,4 @@ const ReviewsPage: React.FC = () => {
   );
 };
 
-export default ReviewsPage;
+export default GamesPage;
