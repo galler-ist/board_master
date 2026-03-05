@@ -18,6 +18,15 @@ export interface BGGGameDetails {
   playingtime?: string;
 }
 
+// Helper to extract text from BGG XML parsed objects
+const getBGGText = (field: any): string => {
+  if (!field) return '';
+  if (typeof field === 'string') return field;
+  if (typeof field === 'object' && field['#text']) return field['#text'];
+  if (typeof field === 'object' && field['@_value']) return field['@_value'];
+  return String(field);
+};
+
 export const searchGames = async (query: string): Promise<BGGSearchResult[]> => {
   try {
     const response = await fetch(`/api/bgg?search=${encodeURIComponent(query)}`);
@@ -29,7 +38,7 @@ export const searchGames = async (query: string): Promise<BGGSearchResult[]> => 
       return items.map((item: any) => ({
         id: item["@_id"],
         name: Array.isArray(item.name) 
-          ? item.name.find((n: any) => n["@_type"] === "primary")["@_value"] 
+          ? (item.name.find((n: any) => n["@_type"] === "primary")?.["@_value"] || item.name[0]["@_value"])
           : item.name["@_value"],
         yearpublished: item.yearpublished?.["@_value"]
       }));
@@ -48,17 +57,19 @@ export const getGameDetails = async (id: string | number): Promise<BGGGameDetail
     const data = await response.json();
     
     if (data.items && data.items.item) {
-      const item = data.items.item;
+      // Handle both single item and array of items
+      const item = Array.isArray(data.items.item) ? data.items.item[0] : data.items.item;
+      
       const name = Array.isArray(item.name) 
-        ? item.name.find((n: any) => n["@_type"] === "primary")["@_value"] 
+        ? (item.name.find((n: any) => n["@_type"] === "primary")?.["@_value"] || item.name[0]["@_value"])
         : item.name["@_value"];
       
       return {
         id: item["@_id"],
         name,
-        image: item.image,
-        thumbnail: item.thumbnail,
-        description: item.description,
+        image: getBGGText(item.image),
+        thumbnail: getBGGText(item.thumbnail),
+        description: getBGGText(item.description),
         yearpublished: item.yearpublished?.["@_value"],
         minplayers: item.minplayers?.["@_value"],
         maxplayers: item.maxplayers?.["@_value"],
@@ -86,16 +97,16 @@ export const getMultipleGameDetails = async (ids: (string | number)[]): Promise<
       
       items.forEach((item: any) => {
         const name = Array.isArray(item.name) 
-          ? item.name.find((n: any) => n["@_type"] === "primary")["@_value"] 
+          ? (item.name.find((n: any) => n["@_type"] === "primary")?.["@_value"] || item.name[0]["@_value"])
           : item.name["@_value"];
         
         const bggId = parseInt(item["@_id"]);
         mappedData[bggId] = {
           id: item["@_id"],
           name,
-          image: item.image,
-          thumbnail: item.thumbnail,
-          description: item.description,
+          image: getBGGText(item.image),
+          thumbnail: getBGGText(item.thumbnail),
+          description: getBGGText(item.description),
           yearpublished: item.yearpublished?.["@_value"]
         };
       });
