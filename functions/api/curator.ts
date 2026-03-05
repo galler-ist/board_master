@@ -8,33 +8,30 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const apiKey = context.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      console.error("GEMINI_API_KEY is missing in environment variables.");
       return new Response(JSON.stringify({ error: "Gemini API Key is missing" }), { 
-        status: 500,
-        headers: { "Content-Type": "application/json" }
+        status: 500, 
+        headers: { "Content-Type": "application/json" } 
       });
     }
 
-    // Use v1 stable endpoint and ensure model name is correct
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Use v1beta which supports 'response_mime_type' for reliable JSON output
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const systemInstruction = `
       You are a professional board game expert and curator for "BoardMaster". 
-      Your goal is to recommend the best board games based on the user's criteria.
+      Your goal is to recommend exactly 3 best board games based on the user's criteria.
       
       Requirements:
-      1. Provide exactly 3 game recommendations.
-      2. For each game, provide the name and a brief, engaging reason why it fits their request.
-      3. CRITICAL: Try to find the correct BoardGameGeek (BGG) ID for each game.
-      4. Return the response in a JSON format.
-      5. If the user asks in Korean, provide the 'reason' and 'message' in Korean.
+      1. Provide name, a brief engaging reason, and the correct BoardGameGeek (BGG) ID for each.
+      2. Return the response in strict JSON format.
+      3. If the user asks in Korean, provide the 'reason' and 'message' in Korean.
       
-      Response Format (Example):
+      Response Format:
       {
         "recommendations": [
-          { "name": "Catan", "bggId": 13, "reason": "Classic resource management that's easy to learn." }
+          { "name": "Game Name", "bggId": 123, "reason": "Why this game fits." }
         ],
-        "message": "Here are 3 games perfect for your group!"
+        "message": "Intro message here."
       }
     `;
 
@@ -49,14 +46,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         ],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 1024,
+          response_mime_type: "application/json" // Force JSON output (v1beta only)
         }
       })
     });
 
     if (!response.ok) {
       const errorData = await response.json() as any;
-      console.error("Gemini API Error:", response.status, errorData);
       return new Response(JSON.stringify({ 
         error: "Gemini API call failed", 
         details: errorData.error?.message || response.statusText 
@@ -67,21 +63,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     const data = await response.json() as any;
-    
-    if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
-      console.error("Invalid response structure from Gemini:", data);
-      return new Response(JSON.stringify({ error: "Invalid AI response structure" }), { 
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
-    }
+    const aiResponse = data.candidates[0].content.parts[0].text;
 
-    let aiText = data.candidates[0].content.parts[0].text;
-    
-    // Clean JSON string if AI wraps it in markdown blocks
-    aiText = aiText.replace(/```json\n?/, '').replace(/\n?```/, '').trim();
-
-    return new Response(aiText, {
+    return new Response(aiResponse, {
       headers: { 
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
@@ -89,7 +73,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
 
   } catch (error: any) {
-    console.error("Curator Function Exception:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error", details: error.message }), { 
       status: 500,
       headers: { "Content-Type": "application/json" }
@@ -97,5 +80,5 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 };
 
-// Fix: Export onRequest directly pointing to onRequestPost
+// 범용 핸들러를 onRequestPost로 정확히 연결
 export const onRequest = onRequestPost;
