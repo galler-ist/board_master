@@ -1,42 +1,87 @@
-/* Daily Recommendation Styles */
-.daily-recommendation {
-  display: inline-flex;
+/* Daily Recommendation v2 Styles */
+.daily-recommendation-v2 {
+  display: flex;
   align-items: center;
-  gap: 1rem;
-  background: rgba(108, 66, 239, 0.1);
-  padding: 0.5rem 1.2rem;
-  border-radius: 50px;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--primary-color);
-  font-size: 0.95rem;
-  backdrop-filter: blur(5px);
-}
-
-.rec-badge {
-  background: var(--primary-color);
-  color: white;
-  padding: 0.2rem 0.8rem;
+  gap: 2rem;
+  background: rgba(var(--surface-color-rgb, 31, 41, 55), 0.6);
+  padding: 1.5rem;
   border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.75rem;
+  margin: 0 auto 3rem auto;
+  border: 2px solid #FBBF24; /* Gold/Amber border */
+  max-width: 600px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.daily-recommendation-v2:hover {
+  transform: translateY(-5px);
+  background: rgba(var(--surface-color-rgb, 31, 41, 55), 0.8);
+}
+
+.rec-image-container {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.rec-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+.rec-content {
+  flex-grow: 1;
+}
+
+.rec-badge-v2 {
+  background: #FBBF24;
+  color: #000;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  font-weight: 800;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
-.rec-link {
-  color: white;
+.rec-link-v2 {
   text-decoration: none;
-  transition: all 0.2s ease;
+  color: white;
 }
 
-[data-theme='light'] .rec-link {
+[data-theme='light'] .rec-link-v2 {
   color: var(--text-color);
 }
 
-.rec-link:hover {
-  color: var(--primary-color);
-  transform: translateX(5px);
+.rec-link-v2 h3 {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #FBBF24;
 }
+
+.rec-arrow {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.8;
+  display: block;
+}
+
+.daily-recommendation-v2:hover .rec-arrow {
+  opacity: 1;
+  transform: translateX(5px);
+  transition: transform 0.2s ease;
+}
+
+/* ... existing styles ... */
 
 .app {
   text-align: center;

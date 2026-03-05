@@ -36,11 +36,17 @@ const HomePage: React.FC = () => {
       </Helmet>
       <section className="hero">
         <div className="container">
-          <div className="daily-recommendation">
-            <span className="rec-badge">{t('home.recommendationTag', 'Today\'s Pick')}</span>
-            <Link to={`/games/${recommendedGame.bggId}`} className="rec-link">
-              <strong>{t(recommendedGame.titleKey)}</strong> &rarr;
-            </Link>
+          <div className="daily-recommendation-v2">
+            <div className="rec-image-container">
+              <img src={recommendedGame.image} alt={t(recommendedGame.titleKey)} />
+            </div>
+            <div className="rec-content">
+              <span className="rec-badge-v2">{t('home.recommendationTag', 'Today\'s Pick')}</span>
+              <Link to={`/games/${recommendedGame.bggId}`} className="rec-link-v2">
+                <h3>{t(recommendedGame.titleKey)}</h3>
+                <span className="rec-arrow">View Details &rarr;</span>
+              </Link>
+            </div>
           </div>
           <h2>{t('hero.title')}</h2>
           <p>{t('hero.subtitle')}</p>
