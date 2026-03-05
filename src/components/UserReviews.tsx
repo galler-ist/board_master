@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';
-import { 
-  collection, 
-  addDoc, 
-  query, 
-  where, 
-  orderBy, 
-  onSnapshot, 
-  serverTimestamp,
-  deleteDoc,
-  doc
-} from 'firebase/firestore';
+import { supabase } from '../supabase';
 import { useTranslation } from 'react-i18next';
 
 import { searchGames } from '../services/bggService';
@@ -18,20 +7,20 @@ import type { BGGSearchResult } from '../services/bggService';
 
 interface Review {
   id: string;
-  userName: string;
+  user_name: string;
   rating: number;
   comment: string;
-  createdAt: any;
+  created_at: string;
   lang?: string;
   password?: string;
-  bggId: number;
+  bgg_id: number;
 }
 
 interface UserReviewsProps {
   bggId?: number;
 }
 
-const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
+const UserReviews: React.FC = ({ bggId: initialBggId }) => {
   const { t, i18n } = useTranslation();
   const [bggId, setBggId] = useState<number | undefined>(initialBggId);
   const [selectedGameName, setSelectedGameName] = useState('');
@@ -62,27 +51,42 @@ const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
       return;
     }
 
-    const q = query(
-      collection(db, 'userReviews'),
-      where('bggId', '==', bggId),
-      orderBy('createdAt', 'desc')
-    );
+    const fetchReviews = async () => {
+      const { data, error } = await supabase
+        .from('reviews')
+        .select('*')
+        .eq('bgg_id', bggId)
+        .order('created_at', { ascending: false });
 
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const reviewsData: Review[] = [];
-      querySnapshot.forEach((doc) => {
-        reviewsData.push({ id: doc.id, ...doc.data() } as Review);
-      });
-      setReviews(reviewsData);
-    }, (error) => {
-      console.error("Error fetching reviews: ", error);
-      // This will help identify if an index is missing
-      if (error.code === 'failed-precondition') {
-        console.warn("Firestore Index is likely missing. Check the link in the error message above.");
+      if (error) {
+        console.error("Error fetching reviews: ", error);
+      } else {
+        setReviews(data || []);
       }
-    });
+    };
 
-    return () => unsubscribe();
+    fetchReviews();
+
+    // Set up real-time subscription
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'reviews',
+          filter: `bgg_id=eq.${bggId}`
+        },
+        () => {
+          fetchReviews();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [bggId]);
 
   const handleGameSearch = async (e: React.FormEvent) => {
@@ -105,33 +109,30 @@ const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
     e.preventDefault();
     if (!userName || !comment || !password || !bggId) return;
 
-    // Capture the form element before the async call
-    const form = e.currentTarget;
-
     setSubmitting(true);
     try {
-      await addDoc(collection(db, 'userReviews'), {
-        bggId,
-        userName,
-        rating,
-        comment,
-        password, // Save password for later deletion
-        lang: i18n.language,
-        createdAt: serverTimestamp(),
-      });
+      const { error } = await supabase
+        .from('reviews')
+        .insert([
+          {
+            bgg_id: bggId,
+            user_name: userName,
+            rating,
+            comment,
+            password,
+            lang: i18n.language,
+          }
+        ]);
 
-      // Explicitly clear all states after successful submission
+      if (error) throw error;
+
       setUserName('');
       setComment('');
       setPassword('');
       setRating(5);
       
-      // Use the captured form reference to reset
-      form.reset();
-      
     } catch (error: any) {
       console.error("Error adding review: ", error);
-      // Show the actual error message to diagnose the issue
       alert(`Failed to submit review: ${error.message || error}`);
     } finally {
       setSubmitting(false);
@@ -140,12 +141,17 @@ const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
 
   const handleDelete = async (review: Review) => {
     const inputPassword = window.prompt(t('reviews.passwordPrompt'));
-    if (inputPassword === null) return; // User cancelled
+    if (inputPassword === null) return;
 
     if (inputPassword === review.password) {
       if (window.confirm(t('reviews.deleteConfirm'))) {
         try {
-          await deleteDoc(doc(db, 'userReviews', review.id));
+          const { error } = await supabase
+            .from('reviews')
+            .delete()
+            .eq('id', review.id);
+
+          if (error) throw error;
           alert(t('reviews.deleteSuccess'));
         } catch (error) {
           console.error("Error deleting review: ", error);
@@ -243,7 +249,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
                   <div className="review-header">
                     <div className="user-info">
                       <div className="user-name-wrapper">
-                        <strong>{rev.userName}</strong>
+                        <strong>{rev.user_name}</strong>
                         {getFlagUrl(rev.lang) && (
                           <img 
                             src={getFlagUrl(rev.lang)} 
@@ -263,7 +269,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
                     <span className="user-rating">{'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}</span>
                   </div>
                   <p>{rev.comment}</p>
-                  <small>{rev.createdAt?.toDate().toLocaleDateString()}</small>
+                  <small>{new Date(rev.created_at).toLocaleDateString()}</small>
                 </div>
               ))
             )}
