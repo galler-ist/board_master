@@ -11,7 +11,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       return new Response(JSON.stringify({ error: "Gemini API Key is missing" }), { status: 500 });
     }
 
-    // Gemini API 엔드포인트 (Flash 모델 사용 - 빠르고 무료 티어 최적화)
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const systemInstruction = `
@@ -60,3 +59,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 };
+
+// 범용 onRequest 핸들러 추가
+export const onRequest = onRequestPost;
