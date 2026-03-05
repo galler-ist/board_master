@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:pages": "wrangler pages dev --ip 0.0.0.0 --proxy 5173 -- npm run dev -- --port 5173 --host 0.0.0.0",
+    "dev:pages": "wrangler pages dev public --ip 0.0.0.0 --proxy 5173 -- npm run dev -- --port 5173 --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
