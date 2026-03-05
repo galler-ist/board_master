@@ -15,7 +15,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Use v1 stable endpoint and ensure model name is correct
+    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const systemInstruction = `
       You are a professional board game expert and curator for "BoardMaster". 
@@ -25,14 +26,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       1. Provide exactly 3 game recommendations.
       2. For each game, provide the name and a brief, engaging reason why it fits their request.
       3. CRITICAL: Try to find the correct BoardGameGeek (BGG) ID for each game.
-      4. Return the response in a strict JSON format so the app can parse it.
+      4. Return the response in a JSON format.
       5. If the user asks in Korean, provide the 'reason' and 'message' in Korean.
       
       Response Format (Example):
       {
         "recommendations": [
-          { "name": "Catan", "bggId": 13, "reason": "Classic resource management that's easy to learn." },
-          ...
+          { "name": "Catan", "bggId": 13, "reason": "Classic resource management that's easy to learn." }
         ],
         "message": "Here are 3 games perfect for your group!"
       }
@@ -48,7 +48,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           }
         ],
         generationConfig: {
-          response_mime_type: "application/json"
+          temperature: 0.7,
+          maxOutputTokens: 1024,
         }
       })
     });
@@ -75,9 +76,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
     }
 
-    const aiResponse = data.candidates[0].content.parts[0].text;
+    let aiText = data.candidates[0].content.parts[0].text;
+    
+    // Clean JSON string if AI wraps it in markdown blocks
+    aiText = aiText.replace(/```json\n?/, '').replace(/\n?```/, '').trim();
 
-    return new Response(aiResponse, {
+    return new Response(aiText, {
       headers: { 
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
@@ -94,4 +98,4 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 };
 
 // 범용 onRequest 핸들러 추가
-export const onRequest = onRequestPost;
+export const onRequest = onRequestGet;
