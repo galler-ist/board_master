@@ -22,8 +22,9 @@ const Header: React.FC = () => {
         <nav>
           <NavLink to="/">{t('nav.home')}</NavLink>
           <NavLink to="/games">{t('nav.gameList')}</NavLink>
+          <NavLink to="/curator">AI Curator</NavLink>
           <NavLink to="/contact">{t('nav.contact')}</NavLink>
-          <NavLink to="/about">{t('nav.about')}</NavLink> {/* New About Us link */}
+          <NavLink to="/about">{t('nav.about')}</NavLink>
         </nav>
         <div className="header-controls">
           <div className="language-selector">

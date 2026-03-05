@@ -6,6 +6,7 @@ import CookieConsent from './components/CookieConsent';
 import HomePage from './pages/HomePage';
 import GamesPage from './pages/GamesPage';
 import BGGGamePage from './pages/BGGGamePage';
+import AICuratorPage from './pages/AICuratorPage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route index element={<HomePage />} />
             <Route path="games" element={<GamesPage />} />
             <Route path="games/:bggId" element={<BGGGamePage />} />
+            <Route path="curator" element={<AICuratorPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="privacy" element={<PrivacyPolicyPage />} />
