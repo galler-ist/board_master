@@ -97,5 +97,5 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 };
 
-// 범용 onRequest 핸들러 추가
-export const onRequest = onRequestGet;
+// Fix: Export onRequest directly pointing to onRequestPost
+export const onRequest = onRequestPost;
