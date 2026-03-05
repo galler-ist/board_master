@@ -12,9 +12,9 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   let bggUrl = "";
 
   if (searchQuery) {
-    bggUrl = `https://boardgamegeek.com/xmlapi2/search?query=${encodeURIComponent(searchQuery)}&type=boardgame`;
+    bggUrl = `https://boardgamegeek.com/xmlapi/search?search=${encodeURIComponent(searchQuery)}`;
   } else if (idQuery) {
-    bggUrl = `https://boardgamegeek.com/xmlapi2/thing?id=${idQuery}&stats=1`;
+    bggUrl = `https://boardgamegeek.com/xmlapi/boardgame/${idQuery}?stats=1`;
   } else {
     return new Response(JSON.stringify({ error: "Missing search or id parameter" }), {
       status: 400,

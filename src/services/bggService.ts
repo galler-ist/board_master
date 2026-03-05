@@ -18,13 +18,28 @@ export interface BGGGameDetails {
   playingtime?: string;
 }
 
-// Helper to extract text from BGG XML parsed objects
+// Helper to extract text from BGG XML parsed objects and handle protocol-relative URLs
 const getBGGText = (field: any): string => {
   if (!field) return '';
-  if (typeof field === 'string') return field;
-  if (typeof field === 'object' && field['#text']) return field['#text'];
-  if (typeof field === 'object' && field['@_value']) return field['@_value'];
-  return String(field);
+  let text = '';
+  if (typeof field === 'string') text = field;
+  else if (typeof field === 'object' && field['#text']) text = field['#text'];
+  else if (typeof field === 'object' && field['@_value']) text = field['@_value'];
+  else text = String(field);
+
+  // Fix protocol-relative URLs (e.g., //cf.geekdo-images.com/...)
+  if (text.startsWith('//')) return 'https:' + text;
+  return text;
+};
+
+// Helper to extract the primary name from game data
+const getPrimaryName = (nameField: any): string => {
+  if (!nameField) return 'Unknown Game';
+  if (Array.isArray(nameField)) {
+    const primary = nameField.find((n: any) => n["@_type"] === "primary" || n["@_primary"] === "true");
+    return getBGGText(primary || nameField[0]);
+  }
+  return getBGGText(nameField);
 };
 
 export const searchGames = async (query: string): Promise<BGGSearchResult[]> => {
@@ -33,14 +48,15 @@ export const searchGames = async (query: string): Promise<BGGSearchResult[]> => 
     if (!response.ok) throw new Error('Search failed');
     const data = await response.json();
     
-    if (data.items && data.items.item) {
-      const items = Array.isArray(data.items.item) ? data.items.item : [data.items.item];
-      return items.map((item: any) => ({
-        id: item["@_id"],
-        name: Array.isArray(item.name) 
-          ? (item.name.find((n: any) => n["@_type"] === "primary")?.["@_value"] || item.name[0]["@_value"])
-          : item.name["@_value"],
-        yearpublished: item.yearpublished?.["@_value"]
+    // Support both v1 (boardgames.boardgame) and v2 (items.item)
+    const items = data.boardgames?.boardgame || data.items?.item;
+    
+    if (items) {
+      const itemsArray = Array.isArray(items) ? items : [items];
+      return itemsArray.map((item: any) => ({
+        id: item["@_id"] || item["@_objectid"],
+        name: getPrimaryName(item.name),
+        yearpublished: getBGGText(item.yearpublished)
       }));
     }
     return [];
@@ -56,24 +72,22 @@ export const getGameDetails = async (id: string | number): Promise<BGGGameDetail
     if (!response.ok) throw new Error('Failed to fetch BGG data');
     const data = await response.json();
     
-    if (data.items && data.items.item) {
-      // Handle both single item and array of items
-      const item = Array.isArray(data.items.item) ? data.items.item[0] : data.items.item;
-      
-      const name = Array.isArray(item.name) 
-        ? (item.name.find((n: any) => n["@_type"] === "primary")?.["@_value"] || item.name[0]["@_value"])
-        : item.name["@_value"];
+    // Support both v1 (boardgames.boardgame) and v2 (items.item)
+    const items = data.boardgames?.boardgame || data.items?.item;
+    
+    if (items) {
+      const item = Array.isArray(items) ? items[0] : items;
       
       return {
-        id: item["@_id"],
-        name,
+        id: item["@_id"] || item["@_objectid"],
+        name: getPrimaryName(item.name),
         image: getBGGText(item.image),
         thumbnail: getBGGText(item.thumbnail),
         description: getBGGText(item.description),
-        yearpublished: item.yearpublished?.["@_value"],
-        minplayers: item.minplayers?.["@_value"],
-        maxplayers: item.maxplayers?.["@_value"],
-        playingtime: item.playingtime?.["@_value"]
+        yearpublished: getBGGText(item.yearpublished),
+        minplayers: getBGGText(item.minplayers),
+        maxplayers: getBGGText(item.maxplayers),
+        playingtime: getBGGText(item.playingtime)
       };
     }
     return null;
@@ -86,28 +100,29 @@ export const getGameDetails = async (id: string | number): Promise<BGGGameDetail
 export const getMultipleGameDetails = async (ids: (string | number)[]): Promise<Record<number, BGGGameDetails>> => {
   if (ids.length === 0) return {};
   try {
+    // API v1 allows multiple IDs separated by commas
     const idString = ids.join(',');
     const response = await fetch(`/api/bgg?id=${idString}`);
     if (!response.ok) throw new Error('Failed to fetch multiple BGG data');
     const data = await response.json();
     
     const mappedData: Record<number, BGGGameDetails> = {};
-    if (data.items && data.items.item) {
-      const items = Array.isArray(data.items.item) ? data.items.item : [data.items.item];
+    const items = data.boardgames?.boardgame || data.items?.item;
+
+    if (items) {
+      const itemsArray = Array.isArray(items) ? items : [items];
       
-      items.forEach((item: any) => {
-        const name = Array.isArray(item.name) 
-          ? (item.name.find((n: any) => n["@_type"] === "primary")?.["@_value"] || item.name[0]["@_value"])
-          : item.name["@_value"];
+      itemsArray.forEach((item: any) => {
+        const id = item["@_id"] || item["@_objectid"];
+        const bggId = parseInt(id);
         
-        const bggId = parseInt(item["@_id"]);
         mappedData[bggId] = {
-          id: item["@_id"],
-          name,
+          id: id,
+          name: getPrimaryName(item.name),
           image: getBGGText(item.image),
           thumbnail: getBGGText(item.thumbnail),
           description: getBGGText(item.description),
-          yearpublished: item.yearpublished?.["@_value"]
+          yearpublished: getBGGText(item.yearpublished)
         };
       });
     }
