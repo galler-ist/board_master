@@ -36,7 +36,10 @@ const AICuratorPage: React.FC = () => {
         body: JSON.stringify({ prompt })
       });
 
-      if (!response.ok) throw new Error('AI recommendation failed');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.details || errorData.error || 'AI recommendation failed');
+      }
       
       const data: AIResponse = await response.json();
       setResult(data);
@@ -51,9 +54,9 @@ const AICuratorPage: React.FC = () => {
       }
       setGameDetails(details);
 
-    } catch (error) {
+    } catch (error: any) {
       console.error("AI Curator error:", error);
-      alert("AI 큐레이터가 잠시 쉬고 있습니다. 나중에 다시 시도해주세요!");
+      alert(`AI 큐레이터 오류: ${error.message}`);
     } finally {
       setLoading(false);
     }

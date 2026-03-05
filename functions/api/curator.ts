@@ -8,7 +8,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const apiKey = context.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: "Gemini API Key is missing" }), { status: 500 });
+      console.error("GEMINI_API_KEY is missing in environment variables.");
+      return new Response(JSON.stringify({ error: "Gemini API Key is missing" }), { 
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
@@ -22,6 +26,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       2. For each game, provide the name and a brief, engaging reason why it fits their request.
       3. CRITICAL: Try to find the correct BoardGameGeek (BGG) ID for each game.
       4. Return the response in a strict JSON format so the app can parse it.
+      5. If the user asks in Korean, provide the 'reason' and 'message' in Korean.
       
       Response Format (Example):
       {
@@ -48,15 +53,43 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       })
     });
 
+    if (!response.ok) {
+      const errorData = await response.json() as any;
+      console.error("Gemini API Error:", response.status, errorData);
+      return new Response(JSON.stringify({ 
+        error: "Gemini API call failed", 
+        details: errorData.error?.message || response.statusText 
+      }), { 
+        status: response.status,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
     const data = await response.json() as any;
+    
+    if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+      console.error("Invalid response structure from Gemini:", data);
+      return new Response(JSON.stringify({ error: "Invalid AI response structure" }), { 
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
     const aiResponse = data.candidates[0].content.parts[0].text;
 
     return new Response(aiResponse, {
-      headers: { "Content-Type": "application/json" }
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
     });
 
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    console.error("Curator Function Exception:", error);
+    return new Response(JSON.stringify({ error: "Internal Server Error", details: error.message }), { 
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 };
 
