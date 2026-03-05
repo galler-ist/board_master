@@ -12,6 +12,12 @@ const HomePage: React.FC = () => {
   const [results, setResults] = useState<BGGSearchResult[]>([]);
   const [loading, setLoading] = useState(false);
 
+  // Pick a random game from our featured list for initial recommendation
+  const [recommendedGame] = useState(() => {
+    const randomIndex = Math.floor(Math.random() * allReviews.length);
+    return allReviews[randomIndex];
+  });
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
@@ -30,6 +36,12 @@ const HomePage: React.FC = () => {
       </Helmet>
       <section className="hero">
         <div className="container">
+          <div className="daily-recommendation">
+            <span className="rec-badge">{t('home.recommendationTag', 'Today\'s Pick')}</span>
+            <Link to={`/games/${recommendedGame.bggId}`} className="rec-link">
+              <strong>{t(recommendedGame.titleKey)}</strong> &rarr;
+            </Link>
+          </div>
           <h2>{t('hero.title')}</h2>
           <p>{t('hero.subtitle')}</p>
           

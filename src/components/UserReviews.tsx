@@ -20,7 +20,7 @@ interface UserReviewsProps {
   bggId?: number;
 }
 
-const UserReviews: React.FC = ({ bggId: initialBggId }) => {
+const UserReviews: React.FC<UserReviewsProps> = ({ bggId: initialBggId }) => {
   const { t, i18n } = useTranslation();
   const [bggId, setBggId] = useState<number | undefined>(initialBggId);
   const [selectedGameName, setSelectedGameName] = useState('');
