@@ -55,6 +55,7 @@ const GamesPage: React.FC = () => {
                     </div>
                   </div>
                 );
+
               })}
             </div>
           )}

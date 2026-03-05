@@ -41,7 +41,8 @@ const BGGGamePage: React.FC = () => {
   }
 
   const title = featuredReview ? t(featuredReview.titleKey) : bggGame.name;
-  const image = featuredReview ? featuredReview.image : bggGame.image;
+  // Use BGG API image if available, fallback to featuredReview image, then a generic placeholder
+  const image = bggGame.image || (featuredReview ? featuredReview.image : 'https://images.unsplash.com/photo-1585502219223-27c085352184?q=80&w=2070&auto=format&fit=crop');
   const content = featuredReview ? t(featuredReview.fullContentKey) : bggGame.description;
 
   return (
