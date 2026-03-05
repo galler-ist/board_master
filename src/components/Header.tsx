@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         <nav>
           <NavLink to="/">{t('nav.home')}</NavLink>
           <NavLink to="/games">{t('nav.gameList')}</NavLink>
-          <NavLink to="/curator">AI Curator</NavLink>
+          <NavLink to="/curator">{t('nav.curator')}</NavLink>
           <NavLink to="/contact">{t('nav.contact')}</NavLink>
           <NavLink to="/about">{t('nav.about')}</NavLink>
         </nav>
