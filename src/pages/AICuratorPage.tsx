@@ -17,7 +17,6 @@ interface AIResponse {
 }
 
 const AICuratorPage: React.FC = () => {
-  const { i18n } = useTranslation();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AIResponse | null>(null);
