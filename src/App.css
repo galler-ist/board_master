@@ -363,8 +363,14 @@
 
 .review-card-img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 250px;
+  object-fit: contain;
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 1rem;
+}
+
+[data-theme='dark'] .review-card-img {
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .review-card-content {
@@ -540,10 +546,15 @@
 
 .review-detail-page .review-detail-image {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  max-height: 500px;
+  object-fit: contain;
   border-radius: 15px;
   margin-bottom: 2rem;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='dark'] .review-detail-page .review-detail-image {
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .review-detail-page h2 {
